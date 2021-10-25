@@ -22,9 +22,13 @@ export class AuthenticationService {
     this.afAuth.authState.subscribe( user => {
       if (user) {
         this.userData = user;
+        localStorage.setItem('user',JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem('user')!);
         //add logic to save user for session
       } else {
         this.userData = null;
+        localStorage.setItem('user', "");
+        JSON.parse(localStorage.getItem('user')!);
         //add logic to clear user for session
       }
     })
@@ -85,8 +89,8 @@ export class AuthenticationService {
   }
 
   get isLoggedIn(): boolean {
-    const user = this.userData;
-    return((user !==null && this.userData.emailVerified !==false) ?true : false);
+    const user = JSON.parse(localStorage.getItem('user')!);
+    return((user !==null && user.emailVerified !==false) ?true : false);
   }
 
   AuthLogin(provider:any) {
@@ -105,7 +109,7 @@ export class AuthenticationService {
 
   SignOut() {
     return this.afAuth.signOut().then(() => {
-     //set logic to remove user from state
+      localStorage.removeItem('user');
       this.router.navigate(['sign-in']);
     })
   }
