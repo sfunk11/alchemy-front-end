@@ -12,7 +12,7 @@
 
       <!-- Calling SignIn Api from AuthService -->
       <div class="form-group text-center">
-        <button class="btn btn-primary text-center" #login (click)="authenticationService.SignIn(userName.value, userPassword.value)">Log In</button>
+        <button class="btn btn-primary text-center" #login (click)="authService.SignIn(userName.value, userPassword.value)">Log In</button>
       </div>
 
       <div class="text-center">
