@@ -3,7 +3,7 @@ import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { User } from "./user";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import  * as firebase from 'firebase/compat/app';
+
 
 
 @Injectable({
