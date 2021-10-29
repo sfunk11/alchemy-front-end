@@ -1,0 +1,15 @@
+<body style="background-color:rgb(14, 11, 11);">
+    <br><br><br><br><br>
+    
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+        
+         <!--  -->
+        <div class="example-box" *ngFor="let movie of movies" cdkDrag>
+            <img src={{movie}}>	
+         
+            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+     
+        </div>
+      </div>
+    
+    </body>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { BoardComponent } from './board/board.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AuthGuard } from './services/guard/auth.guard';
 import { SignInComponent } from './sign-in/sign-in.component';
@@ -12,7 +12,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 const routes: Routes = [
   { path: "sign-in", component: SignInComponent},
   { path: 'register-user', component: SignUpComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
+  { path: 'dashboard', component: BoardComponent, canActivate:[AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: "", redirectTo: '/sign-in', pathMatch: 'full'}

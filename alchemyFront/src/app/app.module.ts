@@ -13,6 +13,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { AuthenticationService } from './services/authentication.service';
 import { RouterModule } from '@angular/router';
+import { BoardComponent } from './board/board.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DragDropModule } from '@angular/cdk/drag-drop'; //installed in alchemyFront // command: ng add @angular/material // came with browser animation above
 
 
 @NgModule({
@@ -22,14 +25,17 @@ import { RouterModule } from '@angular/router';
     SignInComponent,
     SignUpComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    BoardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    BrowserAnimationsModule,
+    DragDropModule
   ],
   providers: [AuthenticationService],
   bootstrap: [AppComponent]
