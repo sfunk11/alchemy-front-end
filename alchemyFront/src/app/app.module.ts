@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 import { BoardComponent } from './board/board.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop'; //installed in alchemyFront // command: ng add @angular/material // came with browser animation above
+import { ApiService } from './services/api.service';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop'; //installed in alchemyF
     BrowserAnimationsModule,
     DragDropModule
   ],
-  providers: [AuthenticationService],
+  providers: [AuthenticationService, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
