@@ -17,6 +17,8 @@ import { BoardComponent } from './board/board.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop'; //installed in alchemyFront // command: ng add @angular/material // came with browser animation above
 import { ApiService } from './services/api/api.service';
+import { CommonModule } from '@angular/common';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -27,10 +29,12 @@ import { ApiService } from './services/api/api.service';
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    BoardComponent
+    BoardComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     RouterModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
