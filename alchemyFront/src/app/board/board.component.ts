@@ -11,7 +11,7 @@ import { ApiService } from '../services/api/api.service';
 export class BoardComponent implements OnInit{
 
   private puzzleName:string = history.state.data;
-  private movies:string[] = [];
+  public movies:string[] = [];
   private basePuzzleUrl = "https://puzzle-alchemy-pieces.s3.us-east-2.amazonaws.com/"
 
   constructor(private api:ApiService){}
