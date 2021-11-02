@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FnParam } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Photo } from './photo';
-import { User } from './user';
+import { Photo } from '../util/photo';
+import { User } from '../util/user';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-import { Photo } from '../services/photo';
-import { ApiService } from '../services/api.service';
+import { Photo } from '../services/util/photo';
+import { ApiService } from '../services/api/api.service';
 
 @Component({
   selector: 'app-board',

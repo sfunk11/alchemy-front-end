@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from '../services/auth/authentication.service';
 
 import { VerifyEmailComponent } from './verify-email.component';
 
