@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FnParam } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Photo } from './photo';
-import { User } from './user';
+import { Photo } from '../util/photo';
+import { User } from '../util/user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ import { User } from './user';
 export class ApiService {
 
   private urlBase = "http://localhost:9001";
-  private userUrl = this.urlBase + "/user";
-  private photoUrl = this.urlBase + "/photo";
+  private userUrl = this.urlBase + "/users";
+  private photoUrl = this.urlBase + "/photos";
   private httpHead = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -37,8 +37,8 @@ export class ApiService {
   }
 
   public uploadPhoto(photo: any): Observable<any> {
-
-    return this.http.post<Object>(this.photoUrl, this.httpHead);
+    let newPhoto: Photo = photo;
+    return this.http.post<Object>(this.photoUrl, newPhoto, this.httpHead);
   }
 
   public getAllPuzzles(): Observable<Photo[]>{
@@ -46,8 +46,13 @@ export class ApiService {
   }
 
   public getAllPhotos(): Observable<Photo[]>{
-    let url = this.photoUrl + "/admin/all";
+    let url = this.photoUrl + "/admin";
     return this.http.get<Photo[]>(url, this.httpHead);
+  }
+
+  public approvePhoto(adminId:number, photoId:number, ):Observable<any>{
+    let url = this.photoUrl + `/admin/approve/${adminId}/${photoId}`
+    return this.http.post<Object>(url,this.httpHead)
   }
 
 }
