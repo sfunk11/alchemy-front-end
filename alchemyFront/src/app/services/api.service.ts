@@ -49,4 +49,5 @@ export class ApiService {
     let url = this.photoUrl + "/admin/all";
     return this.http.get<Photo[]>(url, this.httpHead);
   }
+
 }
