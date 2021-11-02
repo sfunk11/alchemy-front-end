@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FnParam } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Photo } from './photo';
@@ -40,8 +41,12 @@ export class ApiService {
     return this.http.post<Object>(this.photoUrl, this.httpHead);
   }
 
-  // public getPuzzle(photoId:number): Observable<Photo[]>{
+  public getAllPuzzles(): Observable<Photo[]>{
+    return this.http.get<Photo[]>(this.photoUrl, this.httpHead);
+  }
 
-
-  // }
+  public getAllPhotos(): Observable<Photo[]>{
+    let url = this.photoUrl + "/admin/all";
+    return this.http.get<Photo[]>(url, this.httpHead);
+  }
 }

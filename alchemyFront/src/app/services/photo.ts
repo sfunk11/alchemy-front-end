@@ -3,7 +3,7 @@ export interface Photo {
   title:string;
   description: string;
   file: File,
-  folderName: string,
+  imageFileName: string,
   uploader: string;
   isApproved:boolean
 }
