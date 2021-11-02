@@ -1,20 +1,30 @@
 
-
 <!-- Navigation Menu & Dashboard -->
 <div class="container-fluid menu-open menu-closed">
-    <nav class="col-md-2 d-md-block bg-light">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active">
-              <a routerLink="/profile">Profile</a>
-            </a>
-          </li>
-          <!-- Calling SignOut() Api from AuthService -->
-          <li class="nav-item">
-            <a class="nav-link" (click)="authService.SignOut()">
-              <i class="fas fa-sign-out-alt"></i>Log out
-            </a>
-          </li>
-        </ul>
-    </nav>
+
+  <!-- Notes: "menu-open" state will function as a full-blown dashboard. on smaller screens, it will be full-screen when open, on larger screens it will occupy a portion of the page when open. "menu-closed" state will function as an ordinary navbar.-->
+
+  <nav class="col-md-2 d-md-block bg-light">
+
+    <!-- Navigation Links-->
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <!-- I just noticed this is an anchor within an anchor. I will fix this.-->
+        <a class="nav-link active">
+          <a routerLink="/profile">Profile</a>
+        </a>
+      </li>
+
+      <!-- Additional links? Gameboard/categories...?-->
+
+      <!-- Calling SignOut() Api from AuthService -->
+      <li class="nav-item">
+        <a class="nav-link" (click)="authService.SignOut()">
+          <i class="fas fa-sign-out-alt"></i>Log out
+        </a>
+      </li>
+
+      </ul>
+
+  </nav>
 </div>
