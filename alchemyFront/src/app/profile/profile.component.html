@@ -1,25 +1,34 @@
-<div class="container-fluid menu-open menu-closed">
+
+<div class="container-fluid">
 
   <!-- Main content -->
   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
     <div class="inner-adjust">
-  
-      <div class="pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Profile</h1>
-      </div>
       
       <!-- Show user data when logged in -->
       <div class="row" *ngIf="authService.userData as user">
-        <!-- Getting an error: "Can't bind to 'ngIf' since it isn't a known property of 'div'." Which is preventing progress on styling and working with this component.-->
         <div class="col-md-12">
           <div class="media">
-            <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
-              alt="{{user.displayName}}">
             <div class="media-body">
-              <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
-              <p>User ID: <strong>{{user.uid}}</strong></p>
-              <p>Email: <strong>{{user.email}}</strong></p>
-              <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
+
+              <h1 class="profile-heading"><strong>{{(user.displayName) ? user.displayName : 'User'}}</strong>'s Profile</h1>
+
+              <!-- Profile Panel & Content -->
+              <div class="profile-panel">
+
+                <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
+              alt="{{user.displayName}}">
+
+                <ul class="profile-fields">
+                  <li class="profile-field">Display Name: <strong>{{user.displayName}}</strong></li>
+                  <li class="profile-field">Name: <strong>{{(user.f_name) ? user.f_name : ''}}</strong> <strong>{{(user.l_name) ? user.f_name : ''}}</strong></li>
+                  <li class="profile-field">User ID: <span class="spoiler"><strong>{{user.uid}}</strong></span></li>
+                  <li class="profile-field">Email: <strong>{{user.email}}</strong></li>
+                  <li class="profile-field">Email Verified: <strong>{{user.emailVerified}}</strong></li>
+                </ul>
+
+              </div>
+
             </div>
           </div>
         </div>
@@ -28,4 +37,4 @@
     </div>
   </main>
   
-  </div>
+</div>
