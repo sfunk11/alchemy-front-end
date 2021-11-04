@@ -10,7 +10,8 @@ import { User } from '../util/user';
 })
 export class ApiService {
 
-  private urlBase = "http://ec2-52-14-196-156.us-east-2.compute.amazonaws.com:9001";
+  // private urlBase = "http://ec2-52-14-196-156.us-east-2.compute.amazonaws.com:9001";
+  private urlBase = "http://localhost:9001";
   private userUrl = this.urlBase + "/users";
   private photoUrl = this.urlBase + "/photos";
   private httpHead = {
