@@ -13,4 +13,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /* Query Selector Functions go Here */
+
 }
