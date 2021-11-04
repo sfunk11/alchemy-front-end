@@ -19,7 +19,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop'; //installed in alchemyF
 import { ApiService } from './services/api/api.service';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ForgotPasswordComponent,
     VerifyEmailComponent,
     BoardComponent,
-    ProfileComponent
+    ProfileComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     BrowserAnimationsModule,
-    DragDropModule
+    DragDropModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [AuthenticationService, ApiService],
   bootstrap: [AppComponent]

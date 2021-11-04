@@ -13,3 +13,40 @@
       </div>
 
     </body>
+    <body style="background-color:rgb(14, 11, 11);">
+      <br><br><br><br><br>
+      
+        <mat-form-field appearance="fill">
+          <mat-label>Picture Puzzle</mat-label>
+          
+          <mat-select (selectionChange)="switchArray($event)">
+            
+            <mat-option>none</mat-option>
+            <mat-option *ngFor="let pic of listpics" [value]="pic">{{pic}}</mat-option>
+      
+          </mat-select>
+        </mat-form-field>
+      
+        <p style="color:white;">You selected:</p>
+      
+      
+        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+          
+          <div class="example-box" *ngFor="let cuts of selectedArray" cdkDrag> 
+            <img src={{cuts}}>	
+              <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+          </div> 
+      
+        </div>
+      
+        <!-- <div *ngIf="wonGame">
+          <h1 style="color:white" >Your a Wiener !</h1>
+          <img src="https://www.seekpng.com/png/full/12-129989_download-hot-dog-no-background.png"  style="width:300px;height:300px;">
+          <br><br><br><br><br>
+        </div> -->
+      
+      
+      
+      
+       
+      </body>
