@@ -1,22 +1,26 @@
-<body style="background-color:rgb(14, 11, 11);">
+<body>
     <br><br><br><br><br>
 
+     <!-- ---------------------------------------    LOADS RANDOM SLICES INTO LIST   ------------------------------------------------------- -->
     <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-
-        <!--  -->
-      <div class="example-box" *ngFor="let movie of movies" cdkDrag>
-          <img src={{movie}}>
+      <div class="example-box" *ngFor="let movieRandom of moviesRand" cdkDrag>
+          <img src={{movieRandom}} width="max-width">
 
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
 
         </div>
       </div>
 
-    </body>
-    <body style="background-color:rgb(14, 11, 11);">
-      <br><br><br><br><br>
-      
-        <mat-form-field appearance="fill">
+
+
+
+
+     <!-- ---------------------------------------    DROP DOWN MENU SELECT IMAGE PUZZLE   ------------------------------------------------------- -->
+      <!-- NEED TO DYNAMICALLY GENERATE AN ARRAY OF LIST OF NAMES OF ALL PICS IN S3 BUCKET
+      USE THAT ARRAY FOR DROP DOWN
+      USE TEH SELE -->
+    
+        <!-- <mat-form-field appearance="fill">
           <mat-label>Picture Puzzle</mat-label>
           
           <mat-select (selectionChange)="switchArray($event)">
@@ -37,16 +41,16 @@
               <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
           </div> 
       
-        </div>
-      
-        <!-- <div *ngIf="wonGame">
-          <h1 style="color:white" >Your a Wiener !</h1>
-          <img src="https://www.seekpng.com/png/full/12-129989_download-hot-dog-no-background.png"  style="width:300px;height:300px;">
-          <br><br><br><br><br>
         </div> -->
       
+        <div *ngIf="wonGame">
+          <h1 style="color:black" >Your a Wiener !</h1>
+          <img src="https://www.seekpng.com/png/full/12-129989_download-hot-dog-no-background.png"  style="width:300px;height:300px;">
+          <br><br><br><br><br>
+        </div>
       
       
       
-       
+        <br><br><br><br><br>
+       <p>hi</p>
       </body>

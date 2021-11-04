@@ -22,6 +22,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -40,13 +42,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AppRoutingModule,
     RouterModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     BrowserAnimationsModule,
     DragDropModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatFormFieldModule,
     ReactiveFormsModule
+
   ],
   providers: [AuthenticationService, ApiService],
   bootstrap: [AppComponent]
