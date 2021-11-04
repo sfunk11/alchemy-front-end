@@ -27,6 +27,20 @@
                   <li class="profile-field">Email: <strong>{{user.email}}</strong></li>
                   <li class="profile-field">Email Verified: <strong>{{user.emailVerified}}</strong></li>
                 </ul>
+                <button class="edit-button btn btn-primary text-center">Edit Profile</button>
+              </div>
+
+              <div class="edit-details-panel">
+                <div class="edit-form">
+                  <input type="text" class="form-control" placeholder="" aria-label="Email" #userName required>
+                </div>
+                <div class="edit-form">
+                  <input type="password" class="form-control" placeholder="Password" #userPassword required>
+                </div>
+
+                <div class="edit-form text-center">
+                  <button class="btn btn-primary text-center" #login (click)="authService.SignIn(userName.value, userPassword.value)">Save Changes</button>
+                </div>
               </div>
 
             </div>
