@@ -19,6 +19,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop'; //installed in alchemyF
 import { ApiService } from './services/api/api.service';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ProfileComponent } from './profile/profile.component';
     CommonModule,
     AppRoutingModule,
     RouterModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     BrowserAnimationsModule,
