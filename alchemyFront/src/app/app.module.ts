@@ -22,6 +22,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatOptionSelectionChange } from '@angular/material/core';
 
 
 @NgModule({
@@ -48,7 +50,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DragDropModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatOptionSelectionChange
+
+
   ],
   providers: [AuthenticationService, ApiService],
   bootstrap: [AppComponent]
