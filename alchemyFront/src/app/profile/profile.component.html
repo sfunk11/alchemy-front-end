@@ -15,16 +15,19 @@
             <!-- Profile Panel & Content -->
             <div class="profile-panel">
 
-              <img class="pfp" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
-              alt="{{user.displayName}}">
+              <div class="pfp-panel">
+                <img class="pfp" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="{{user.displayName}}">
+              </div>
 
-              <ul class="profile-fields">
-                <li class="profile-field">Display Name: <strong>{{user.displayName}}</strong></li>
-                <li class="profile-field">Name: <strong>{{(user.f_name) ? user.f_name : ''}}</strong> <strong>{{(user.l_name) ? user.f_name : ''}}</strong></li>
-                <li class="profile-field">User ID: <span class="spoiler"><strong>{{user.uid}}</strong></span></li>
-                <li class="profile-field">Email: <strong>{{user.email}}</strong></li>
-                <li class="profile-field">Email Verified: <strong>{{user.emailVerified}}</strong></li>
-              </ul>
+              <div class="details-panel">
+                <ul class="profile-fields">
+                  <li class="profile-field">Display Name: <strong>{{user.displayName}}</strong></li>
+                  <li class="profile-field">Name: <strong>{{(user.f_name) ? user.f_name : ''}}</strong> <strong>{{(user.l_name) ? user.f_name : ''}}</strong></li>
+                  <li class="profile-field">User ID: <span class="spoiler"><strong>{{user.uid}}</strong></span></li>
+                  <li class="profile-field">Email: <strong>{{user.email}}</strong></li>
+                  <li class="profile-field">Email Verified: <strong>{{user.emailVerified}}</strong></li>
+                </ul>
+              </div>
 
             </div>
 

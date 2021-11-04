@@ -23,6 +23,7 @@ a {
 
 .container-fluid {
   align-items: center;
+  padding: 0;
 }
 
 ul {
