@@ -23,7 +23,7 @@ export class ApiService {
   constructor(private http:HttpClient) { }
 
   public getUserProfile(username:string) : Observable<User>{
-    let url = this.userUrl + `/${username}`;
+    let url = this.userUrl + `/${username}`; 
     return this.http.get<User>(url, this.httpHead);
   }
 

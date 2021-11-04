@@ -18,6 +18,18 @@ strong {
   padding: .5vh 1vw;
 }
 
+.edit-form {
+  display: grid;
+}
+
+.edit-form label {
+  grid-column: 1;
+}
+
+.edit-form input {
+  grid-column: 2;
+}
+
 .pfp {
   max-width: 20vw;
   height: auto;
@@ -27,7 +39,12 @@ strong {
 }
 
 .profile-fields {
+  font-size: 2vw;
   list-style-type: none;
+}
+
+.profile-field input {
+  font-size: 2vw;
 }
 
 @media screen and (min-width: 600px) {
