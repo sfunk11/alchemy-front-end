@@ -23,7 +23,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatOptionSelectionChange } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -52,7 +52,7 @@ import { MatOptionSelectionChange } from '@angular/material/core';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatOptionSelectionChange
+    MatSelectModule
 
 
   ],
