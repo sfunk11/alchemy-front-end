@@ -23,24 +23,30 @@
                 <ul class="profile-fields">
                   <li class="profile-field">Display Name: <strong>{{user.displayName}}</strong></li>
                   <li class="profile-field">Name: <strong>{{(user.f_name) ? user.f_name : ''}}</strong> <strong>{{(user.l_name) ? user.f_name : ''}}</strong></li>
-                  <li class="profile-field">User ID: <span class="spoiler"><strong>{{user.uid}}</strong></span></li>
                   <li class="profile-field">Email: <strong>{{user.email}}</strong></li>
                   <li class="profile-field">Email Verified: <strong>{{user.emailVerified}}</strong></li>
                 </ul>
                 <button class="edit-button btn btn-primary text-center">Edit Profile</button>
               </div>
 
-              <div class="edit-details-panel">
-                <div class="edit-form">
-                  <input type="text" class="form-control" placeholder="" aria-label="Email" #userName required>
-                </div>
-                <div class="edit-form">
-                  <input type="password" class="form-control" placeholder="Password" #userPassword required>
+              <div class="details-panel edit-form hidden">
+                <div class="profile-fields">
+                  <div class="profile-field">
+                    <label for="display-name">Display Name: </label>
+                    <input type="text" class="form-control" placeholder="{{(user.displayName) ? user.displayName : 'Display Name'}}" #displayName required>
+                  </div>
+                  <div class="profile-field">
+                    <label for="first-name">Name: </label>
+                    <input type="text" class="form-control" placeholder="First Name" #firstName required>
+                    <input type="text" class="form-control" placeholder="Last Name" #lastName>
+                  </div>
+                  <div class="profile-field">
+                    <label for="email">Email: </label>
+                    <input type="text" class="form-control" placeholder="Email Address" #email required>
+                  </div>
                 </div>
 
-                <div class="edit-form text-center">
-                  <button class="btn btn-primary text-center" #login (click)="authService.SignIn(userName.value, userPassword.value)">Save Changes</button>
-                </div>
+                <button class="btn btn-primary text-center" #saveProfile>Save Changes</button>
               </div>
 
             </div>
