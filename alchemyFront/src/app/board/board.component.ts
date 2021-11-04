@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { Photo } from '../services/util/photo';
 import { ApiService } from '../services/api/api.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-board',
@@ -62,8 +64,8 @@ ngOnInit(): void {
 objArr =
 [
   {
-  "catpic" : 
-  [ 
+  "catpic" :
+  [
     "./assets/catpic/img0.jpg",
     "./assets/catpic/img8.jpg",
     "./assets/catpic/img5.jpg",
@@ -77,7 +79,7 @@ objArr =
   },
 
   {
-  "earthpic" : 
+  "earthpic" :
   [
     "./assets/earthpic/img0.jpg",
     "./assets/earthpic/img8.jpg",
@@ -152,7 +154,7 @@ objArr =
 }
 
 
-function arrayEqual(ary1 : String[], ary2: String[]):boolean 
+function arrayEqual(ary1 : String[], ary2: String[]):boolean
   {
 
     for (var i = 0; i < ary1.length; i++)
