@@ -23,7 +23,9 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
+import {MatSelectModule} from '@angular/material/select';
+import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { MatSelectModule } from '@angular/material/select';
     VerifyEmailComponent,
     BoardComponent,
     ProfileComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    PhotoUploadComponent
   ],
   imports: [
     BrowserModule,
