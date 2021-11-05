@@ -10,137 +10,84 @@ import { ApiService } from '../services/api/api.service';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit{
-
+  // your a wiener!
+  wonGame : boolean = false;
+  // neat trick
   private puzzleName:string = history.state.data;
+  // ordered array of pics
   public movies:string[] = [];
+  // disordered array of pics
+  public moviesRand:string[] = [];
+  // root directory of images?
   private basePuzzleUrl = "https://puzzle-alchemy-pieces.s3.us-east-2.amazonaws.com/"
 
+  // dependent on api service to fetch image slices
   constructor(private api:ApiService){}
 
-// compare two arrays one with correct order
-// console log drop event and see changes
-ngOnInit(): void {
-  for (let  i = 0; i<10; i++){
-    let puzzleUrl = this.basePuzzleUrl + this.puzzleName + `/${this.puzzleName}_${i}.jpg`
-    this.movies.push(puzzleUrl);
 
+ngOnInit(): void
+{
+  for (let  i = 0; i<10; i++)
+  {
+    // concat to get each image slice from bucket url, nice!
+    let puzzleUrl = this.basePuzzleUrl + this.puzzleName + `/${this.puzzleName}_${i}.jpg`
+    // this array is already in order 
+    this.movies.push(puzzleUrl);
   }
+
+  // copy over all images to Random Array
+  for (let  i = 0; i<10; i++)
+  {
+    this.moviesRand[i] = this.movies[i];
+  }
+
+  // wow wierd to look at this variable declarations
   let m = this.movies.length, t, i;
 
   // While there remain elements to shuffle
-  while (m) {
+  while (m)
+  {
     // Pick a remaining element…
     i = Math.floor(Math.random() * m--);
 
     // And swap it with the current element.
-    t = this.movies[m];
-    this.movies[m] = this.movies[i];
-    this.movies[i] = t;
+    t = this.moviesRand[m];
+    this.moviesRand[m] = this.moviesRand[i];
+    this.moviesRand[i] = t;
+    console.log(this.moviesRand[i]);
   }
+
 }
 
 
-// ---------------------------------------   TEST DATA PUZZLE SELECT ---------------------------
+// need to build string array of the list of image names in the buckets
 
 
 
-  selectedValue = "";
-  selectedArray : string[] = [];
+  
 
-  // movies = [
-  //   "./assets/"+this.selected+"/img0.jpg",
-  //   "./assets/"+this.selected+"/img8.jpg",
-  //   "./assets/"+this.selected+"/img5.jpg",
-  //   "./assets/"+this.selected+"/img6.jpg",
-  //   "./assets/"+this.selected+"/img7.jpg",
-  //   "./assets/"+this.selected+"/img4.jpg",
-  //   "./assets/"+this.selected+"/img3.jpg",
-  //   "./assets/"+this.selected+"/img2.jpg",
-  //   "./assets/"+this.selected+"/img1.jpg",
-  // ];
-
-
-objArr =
-[
+  drop(event: CdkDragDrop<string[]>)
   {
-  "catpic" :
-  [
-    "./assets/catpic/img0.jpg",
-    "./assets/catpic/img8.jpg",
-    "./assets/catpic/img5.jpg",
-    "./assets/catpic/img6.jpg",
-    "./assets/catpic/img7.jpg",
-    "./assets/catpic/img4.jpg",
-    "./assets/catpic/img3.jpg",
-    "./assets/catpic/img2.jpg",
-    "./assets/catpic/img1.jpg"
-   ]
-  },
+    // swap picture slice positions on board
+    moveItemInArray(this.moviesRand, event.previousIndex, event.currentIndex);
+    // call puzzle solved function
+    this.wonGame = arrayEqual(this.moviesRand, this.movies);
 
-  {
-  "earthpic" :
-  [
-    "./assets/earthpic/img0.jpg",
-    "./assets/earthpic/img8.jpg",
-    "./assets/earthpic/img5.jpg",
-    "./assets/earthpic/img6.jpg",
-    "./assets/earthpic/img7.jpg",
-    "./assets/earthpic/img4.jpg",
-    "./assets/earthpic/img3.jpg",
-    "./assets/earthpic/img2.jpg",
-    "./assets/earthpic/img1.jpg"
-  ]
-  }
-];
+    // console.log(event.previousContainer);
+    // console.log(event.currentIndex);
+    // console.log(this.moviesRand[0])
 
-  inOrder =
-  [
-    "./img0.jpg",
-    "./img1.jpg",
-    "./img2.jpg",
-    "./img3.jpg",
-    "./img4.jpg",
-    "./img5.jpg",
-    "./img6.jpg",
-    "./img7.jpg",
-    "./img8.jpg",
-  ];
-
-
-
-  listpics =
-  [
-    "catpic",
-    "naturepic",
-    "earthpic",
-  ];
-
-
-
-//-------------------------    DRAG DROP WITH GAME FUNCTIONALITY -----------------------------
-// GAME FUNCTIONALITY COMMENTED OUT BECAUSE TRYING TO LOAD DIFFERENT PUZZLES BASED ON SELECT
-
-  wonGame : boolean = false;
-
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
-
-
-    this.wonGame = arrayEqual(this.selectedArray, this.inOrder);
-
-    console.log(this.selectedArray);
-    // console.log(this.movies[0]);
   }
 
 
 
-
+  // gets value of selected drop down menu
   switchArray(valz: any)
   {
     let optiontext = valz.source.selected.viewValue;
     console.log(optiontext);
 
-    for (let i =0; i < 9; i++)
+    for (let i =0; i < 10; i++)
     {
     //this.selectedArray = this.objArr.${optiontext}[i];
     //this.selectedArray = this.objArr.catpic[i];
@@ -152,8 +99,8 @@ objArr =
 
 }
 
-
-function arrayEqual(ary1 : String[], ary2: String[]):boolean
+// comnpare array in order vs random order on puzzle board
+function arrayEqual(ary1 : String[], ary2: String[]):boolean 
   {
 
     for (var i = 0; i < ary1.length; i++)

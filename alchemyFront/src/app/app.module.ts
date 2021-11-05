@@ -53,8 +53,9 @@ import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSelectModule,
     MatFormFieldModule,
-    MatSelectModule
+    ReactiveFormsModule
 
 
   ],
