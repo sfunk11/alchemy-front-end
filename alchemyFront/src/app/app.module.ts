@@ -25,6 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
+import { PuzzleService } from './services/puzzle/puzzle.service';
+import { PuzzleSelectorComponent } from './puzzle-selector/puzzle-selector.component';
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
     BoardComponent,
     ProfileComponent,
     FileUploadComponent,
-    PhotoUploadComponent
+    PhotoUploadComponent,
+    PuzzleSelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,7 @@ import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 
 
   ],
-  providers: [AuthenticationService, ApiService],
+  providers: [AuthenticationService, ApiService, PuzzleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

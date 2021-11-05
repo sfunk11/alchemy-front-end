@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { Photo } from '../services/util/photo';
 import { ApiService } from '../services/api/api.service';
+import { PuzzleService } from '../services/puzzle/puzzle.service';
+import { AuthenticationService } from '../services/auth/authentication.service';
 
 
 @Component({
@@ -12,8 +14,8 @@ import { ApiService } from '../services/api/api.service';
 export class BoardComponent implements OnInit{
   // your a wiener!
   wonGame : boolean = false;
-  // neat trick
-  private puzzleName:string = history.state.data;
+  private puzzleName:string = '';
+  puzzleList = [] as Photo[];
   // ordered array of pics
   public movies:string[] = [];
   // disordered array of pics
@@ -22,16 +24,23 @@ export class BoardComponent implements OnInit{
   private basePuzzleUrl = "https://puzzle-alchemy-pieces.s3.us-east-2.amazonaws.com/"
 
   // dependent on api service to fetch image slices
-  constructor(private api:ApiService){}
+  constructor(private api:ApiService, private puzzle:PuzzleService, private auth:AuthenticationService){}
+ // neat trick
 
 
 ngOnInit(): void
 {
+  this.loadPuzzleList();
+  this.puzzleName = this.puzzle.puzzleName;
+  // this.createPuzzleBoard(this.puzzleName);
+}
+
+createPuzzleBoard(puzzleName:string){
   for (let  i = 0; i<10; i++)
   {
     // concat to get each image slice from bucket url, nice!
-    let puzzleUrl = this.basePuzzleUrl + this.puzzleName + `/${this.puzzleName}_${i}.jpg`
-    // this array is already in order 
+    let puzzleUrl = this.basePuzzleUrl + puzzleName + `/${puzzleName}_${i}.jpg`
+    // this array is already in order
     this.movies.push(puzzleUrl);
   }
 
@@ -56,15 +65,26 @@ ngOnInit(): void
     this.moviesRand[i] = t;
     console.log(this.moviesRand[i]);
   }
-
 }
-
-
 // need to build string array of the list of image names in the buckets
 
+  loadPuzzleList() {
+    this.api.getAllPuzzles().subscribe(
+      result => {
+        console.log(result);
+        for(let i=0; i<result.length; i++){
+          if (result[i].isApproved){
+            this.puzzleList.push(result[i])
+          }else if (result[i].uploader.email == this.auth.userData.email){
+            this.puzzleList.push(result[i])
+          }
+        }
+        console.log(this.puzzleList);
+      }
+    )
+  }
 
 
-  
 
   drop(event: CdkDragDrop<string[]>)
   {
@@ -100,7 +120,7 @@ ngOnInit(): void
 }
 
 // comnpare array in order vs random order on puzzle board
-function arrayEqual(ary1 : String[], ary2: String[]):boolean 
+function arrayEqual(ary1 : String[], ary2: String[]):boolean
   {
 
     for (var i = 0; i < ary1.length; i++)

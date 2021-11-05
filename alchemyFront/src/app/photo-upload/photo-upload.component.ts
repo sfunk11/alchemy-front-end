@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api/api.service';
 import { AuthenticationService } from '../services/auth/authentication.service';
+import { PuzzleService } from '../services/puzzle/puzzle.service';
 
 @Component({
   selector: 'app-photo-upload',
@@ -12,7 +13,7 @@ import { AuthenticationService } from '../services/auth/authentication.service';
 export class PhotoUploadComponent implements OnInit {
 
   constructor(private apiService:ApiService, private authService:AuthenticationService,private router: Router,
-    private ngZone: NgZone ) { }
+    private ngZone: NgZone, private puzzle: PuzzleService ) { }
 
   photoGroup = new FormGroup({
     title: new FormControl(""),
@@ -40,10 +41,10 @@ export class PhotoUploadComponent implements OnInit {
     this.apiService.uploadPhoto(formData).subscribe(
       response => {
         console.log(response);
-        let puzzleName = this.photoGroup.get("fileName")!.value;
-        puzzleName = puzzleName.subst(0,puzzleName.indexOf('.'));
+        this.puzzle.puzzleName=this.photoGroup.get("fileName")!.value;
+
         this.ngZone.run(() => {
-          this.router.navigate(['board',{ data: puzzleName  }]);
+          this.router.navigate(['board']);
           });
       }
     )

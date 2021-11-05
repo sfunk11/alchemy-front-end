@@ -16,7 +16,7 @@
     <input type="text" class="form-control" #fileName formControlName="fileName" placeholder="example: myPhoto.jpg">
   </div>
   <div class="form-group">
-    <input type="file" class="form-control-file" #file formControlName="file" (change)="onChange($event)">
+    <input type="file" class="form-control-file" #file (change)="onChange($event)">
   </div>
 
   <button type="submit" class="btn btn-primary" (click)="uploadPhoto(photoGroup)" >Submit</button>
