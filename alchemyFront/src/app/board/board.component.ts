@@ -2,8 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { Photo } from '../services/util/photo';
 import { ApiService } from '../services/api/api.service';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-board',

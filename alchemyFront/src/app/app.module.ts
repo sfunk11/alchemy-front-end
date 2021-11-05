@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {MatSelectModule} from '@angular/material/select';
     VerifyEmailComponent,
     BoardComponent,
     ProfileComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    PhotoUploadComponent
   ],
   imports: [
     BrowserModule,
