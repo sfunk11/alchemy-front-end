@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from '../services/api/api.service';
 import { AuthenticationService } from '../services/auth/authentication.service';
 
@@ -10,7 +11,8 @@ import { AuthenticationService } from '../services/auth/authentication.service';
 })
 export class PhotoUploadComponent implements OnInit {
 
-  constructor(private apiService:ApiService, private authService:AuthenticationService) { }
+  constructor(private apiService:ApiService, private authService:AuthenticationService,private router: Router,
+    private ngZone: NgZone ) { }
 
   photoGroup = new FormGroup({
     title: new FormControl(""),
@@ -38,6 +40,11 @@ export class PhotoUploadComponent implements OnInit {
     this.apiService.uploadPhoto(formData).subscribe(
       response => {
         console.log(response);
+        let puzzleName = this.photoGroup.get("fileName")!.value;
+        puzzleName = puzzleName.subst(0,puzzleName.indexOf('.'));
+        this.ngZone.run(() => {
+          this.router.navigate(['board',{ data: puzzleName }]);
+          });
       }
     )
   }
