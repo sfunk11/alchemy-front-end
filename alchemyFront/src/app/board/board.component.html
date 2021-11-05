@@ -1,15 +1,16 @@
 <body>
     <br><br><br><br><br>
 
+    <app-puzzle-selector></app-puzzle-selector>
      <!-- ---------------------------------------    LOADS RANDOM SLICES INTO LIST   ------------------------------------------------------- -->
-    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <!-- <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let movieRandom of moviesRand" cdkDrag>
           <img src={{movieRandom}} width="max-width">
 
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
 
         </div>
-      </div>
+      </div> -->
 
 
 
@@ -26,7 +27,7 @@
           <mat-select (selectionChange)="switchArray($event)">
 
             <mat-option>none</mat-option>
-            <mat-option *ngFor="let pic of listpics" [value]="pic">{{pic}}</mat-option>
+            <mat-option *ngFor="let pic of this.puzzleList" [value]="pic">{{pic}}</mat-option>
 
           </mat-select>
         </mat-form-field>
@@ -36,7 +37,7 @@
 
         <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
 
-          <div class="example-box" *ngFor="let cuts of selectedArray" cdkDrag>
+          <div class="example-box" *ngFor="let cuts of puzzleList" cdkDrag>
             <img src={{cuts}}>
               <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
           </div>
