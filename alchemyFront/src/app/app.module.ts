@@ -19,6 +19,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop'; //installed in alchemyF
 import { ApiService } from './services/api/api.service';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
+import { AdminComponent } from './admin/admin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -30,10 +32,13 @@ import { ProfileComponent } from './profile/profile.component';
     ForgotPasswordComponent,
     VerifyEmailComponent,
     BoardComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     AppRoutingModule,
     RouterModule,
