@@ -2,15 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/auth/authentication.service';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class SignInComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
   constructor(public authService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
+
+  /* Query Selector Functions go Here */
 
 }

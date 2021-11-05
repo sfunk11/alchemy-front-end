@@ -1,0 +1,17 @@
+.profile-heading {
+  padding: 2vh 1vw;
+  font-size: 3vh;
+  margin: 0 auto;
+}
+
+strong {
+  color: #1400c4;
+}
+
+.profile-fields {
+  list-style-type: none;
+}
+
+@media screen and (min-width: 600px) {
+
+}

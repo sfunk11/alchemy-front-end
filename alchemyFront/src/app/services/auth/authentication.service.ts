@@ -1,9 +1,9 @@
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
-import { User } from "./user";
+import { User } from "../util/user";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import  * as firebase from 'firebase/compat/app';
+
 
 
 @Injectable({
@@ -60,7 +60,7 @@ export class AuthenticationService {
     return this.afAuth.signInWithEmailAndPassword(email,password)
       .then((res) => {
         this.ngZone.run(() => {
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['profile']);
         });
         this.SetUserData(res.user);
       }).catch((error) => {
