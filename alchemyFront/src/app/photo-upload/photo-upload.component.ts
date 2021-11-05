@@ -16,20 +16,25 @@ export class PhotoUploadComponent implements OnInit {
     title: new FormControl(""),
     description: new FormControl("") ,
     fileName: new FormControl(""),
-    file: new FormControl(null),
     uploader: new FormControl("")
-
   })
-
+  file: File = {} as File;
 
   ngOnInit(): void {
   }
 
+  onChange(event: any) {
+    this.file = event.target.files[0];
+}
   public uploadPhoto(photo:FormGroup){
 
     this.photoGroup.patchValue({uploader: this.authService.userData.email})
     let formData = new FormData();
-    formData.append("file", this.photoGroup.get('file')!.value,);
+    formData.append("file", this.file, this.photoGroup.get("fileName")!.value);
+    formData.append("title", this.photoGroup.get("title")!.value);
+    formData.append("description", this.photoGroup.get("description")!.value);
+    formData.append("fileName", this.photoGroup.get("fileName")!.value);
+    formData.append("uploader", this.photoGroup.get("uploader")!.value);
     this.apiService.uploadPhoto(formData).subscribe(
       response => {
         console.log(response);

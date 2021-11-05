@@ -29,25 +29,20 @@ export class ApiService {
   }
 
   public updateUserProfile(user:any): Observable<Object>{
-    // let stringUserInfo = "";
-    // let originalUser = this.getUserProfile(user.email).subscribe(
-    //   res => {
-    //     console.log(res);
-    //     user.userID = res.userID;
-    //     stringUserInfo = JSON.stringify(user);
-    //   }
-    // );
-
-    return this.http.post<Object>(this.userUrl, user, this.httpHead);
+    return this.http.post<String>(this.userUrl, user, this.httpHead);
   }
   public getAllUsers() : Observable<User[]>{
 
     return this.http.get<User[]>(this.userUrl, this.httpHead);
   }
 
-  public uploadPhoto(photo: any): Observable<any> {
-    let newPhoto: Photo = photo;
-    return this.http.post<Object>(this.photoUrl, newPhoto, this.httpHead);
+  public uploadPhoto(photo: FormData): Observable<any> {
+    let httpHead = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    return this.http.post<Object>(this.photoUrl, photo, httpHead);
   }
 
   public getAllPuzzles(): Observable<Photo[]>{
