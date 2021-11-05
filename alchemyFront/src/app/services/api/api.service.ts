@@ -23,12 +23,20 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  public getUserProfile(username:string) : Observable<User>{
-    let url = this.userUrl + `/${username}`; 
+  public getUserProfile(email:string) : Observable<User>{
+    let url = this.userUrl + "/email/" + email;
     return this.http.get<User>(url, this.httpHead);
   }
 
   public updateUserProfile(user:any): Observable<Object>{
+    // let stringUserInfo = "";
+    // let originalUser = this.getUserProfile(user.email).subscribe(
+    //   res => {
+    //     console.log(res);
+    //     user.userID = res.userID;
+    //     stringUserInfo = JSON.stringify(user);
+    //   }
+    // );
 
     return this.http.post<Object>(this.userUrl, user, this.httpHead);
   }

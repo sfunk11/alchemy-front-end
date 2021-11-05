@@ -16,15 +16,20 @@ export class ProfileComponent implements OnInit {
   }
 
   userInfo = new FormGroup({
+    userID: new FormControl(0),
     email: new FormControl(''),
     displayName: new FormControl(''),
     f_name: new FormControl(''),
     l_name: new FormControl(''),
+    roleID: new FormControl(1),
     photoURL: new FormControl(''),
     emailVerified: new FormControl('')
   });
 
   public submit(user: FormGroup){
+
+    user.patchValue({email: this.authService.userData.email});
+
     let stringUserInfo = JSON.stringify(user.value);
     this.apiService.updateUserProfile(stringUserInfo).subscribe(
       response => {

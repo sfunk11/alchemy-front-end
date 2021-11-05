@@ -37,10 +37,12 @@ export class AuthenticationService {
   SetUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afStore.doc(`users/${user.uid}`);
     const userData: User = {
+      userID: 0,
       email: user.email,
       displayName: user.displayName,
       f_name: '',
       l_name: '',
+      roleID: 0,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified
     }

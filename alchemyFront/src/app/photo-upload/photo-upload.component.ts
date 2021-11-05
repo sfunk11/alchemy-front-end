@@ -29,7 +29,7 @@ export class PhotoUploadComponent implements OnInit {
 
     this.photoGroup.patchValue({uploader: this.authService.userData.email})
     let formData = new FormData();
-    formData.append("form", this.photoGroup.get('file')!.value,);
+    formData.append("file", this.photoGroup.get('file')!.value,);
     this.apiService.uploadPhoto(formData).subscribe(
       response => {
         console.log(response);
