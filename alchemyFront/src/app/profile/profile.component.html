@@ -4,7 +4,7 @@
   <!-- Main content -->
   <main role="main">
     <div class="inner-adjust">
-      
+
       <!-- Show user data when logged in -->
       <div class="row" *ngIf="authService.userData as user">
         <div class="media">
@@ -29,20 +29,21 @@
                 <button class="edit-button btn btn-primary text-center">Edit Profile</button>
               </div>
 
-              <div class="details-panel edit-form hidden" [formGroup]="userInfo">
-                <div class="profile-fields">
+              <div class="details-panel edit-form hidden" >
+                <div class="profile-fields" [formGroup] = "userInfo">
                   <div class="profile-field">
                     <label for="display-name">Display Name: </label>
-                    <input type="text" class="form-control" placeholder="{{(user.displayName) ? user.displayName : 'Create a Display Name'}}" #displayName required>
+                    <input type="text" class="form-control" formControlName= "displayName" placeholder="{{(user.displayName) ? user.displayName : 'Create a Display Name'}}" #displayName required>
                   </div>
                   <div class="profile-field">
-                    <label for="first-name">Name: </label>
-                    <input type="text" class="form-control" placeholder="{{(user.f_name) ? user.f_name : 'First Name'}}" #firstName required><input type="text" class="form-control" placeholder="{{(user.l_name) ? user.f_name : 'Last Name'}}" #lastName>
+                    <label for="firstName">Name: </label>
+                    <input type="text" class="form-control" formControlName="f_name" placeholder="{{(user.f_name) ? user.f_name : 'First Name'}}" #firstName required>
+                    <input type="text" class="form-control" formControlName="l_name"placeholder="{{(user.l_name) ? user.lname : 'Last Name'}}" #lastName>
                   </div>
-                  <div class="profile-field">
+                  <!-- <div class="profile-field">
                     <label for="email">Email: </label>
-                    <input type="text" class="form-control" placeholder="{{(user.email) ? user.email : 'New Email'}}" #email required>
-                  </div>
+                    <input type="text" class="form-control" formControlName="email" placeholder="{{(user.email) ? user.email : 'New Email'}}" #email required>
+                  </div> -->
                 </div>
 
                 <button class="btn btn-primary text-center" (click)="submit(userInfo)" #saveProfile>Save Changes</button>
@@ -53,8 +54,8 @@
           </div>
         </div>
       </div>
-  
+
     </div>
   </main>
-  
+
 </div>
