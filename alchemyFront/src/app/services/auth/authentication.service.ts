@@ -21,7 +21,17 @@ export class AuthenticationService {
     {
     this.afAuth.authState.subscribe( user => {
       if (user) {
-        this.userData = user;
+        this.userData= {
+          uid:"",
+          userID: 0,
+          email: user.email,
+          displayName: user.displayName,
+          f_name: '',
+          l_name: '',
+          roleID: 0,
+          photoURL: user.photoURL,
+          emailVerified: user.emailVerified
+        }
 
       } else {
         this.userData = null;
@@ -33,6 +43,7 @@ export class AuthenticationService {
   SetUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afStore.doc(`users/${user.uid}`);
     const userData: User = {
+      uid: user.uid,
       userID: 0,
       email: user.email,
       displayName: user.displayName,
@@ -88,7 +99,13 @@ export class AuthenticationService {
   }
 
   get isLoggedIn(): boolean {
-    return((this.userData !==undefined || this.userData !== null && this.userData.emailVerified !==false) ?true : false);
+    if (this.userData == undefined || this.userData == null){
+      return false;
+    }else if(this.userData.emailVerified==false){
+        return false;
+      }
+
+    return true;
   }
 
   AuthLogin(provider:any) {
@@ -102,7 +119,6 @@ export class AuthenticationService {
       window.alert(error)
     })
   }
-
 
 
   SignOut() {
