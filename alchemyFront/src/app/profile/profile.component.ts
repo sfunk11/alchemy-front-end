@@ -4,6 +4,7 @@ import { ApiService } from '../services/api/api.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { User } from '../services/util/user';
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -11,12 +12,13 @@ import { User } from '../services/util/user';
 })
 export class ProfileComponent implements OnInit {
 
+  public user= {} as User;
   constructor(public authService: AuthenticationService, private apiService: ApiService) { }
 
   ngOnInit(): void {
-
+      this.getUser();
   }
-  // public user:User;
+
 
   userInfo = new FormGroup({
     userID: new FormControl(0),
@@ -36,7 +38,9 @@ export class ProfileComponent implements OnInit {
     let stringUserInfo = JSON.stringify(userForm.value);
     this.apiService.updateUserProfile(stringUserInfo).subscribe(
     response => {
-        console.log(response);
+
+        this.user = response as User;
+        console.log(this.user);
       },
       error =>{
         console.warn("there was an error ", error);
@@ -44,6 +48,17 @@ export class ProfileComponent implements OnInit {
     )
   }
 
+  getUser() {
+    this.apiService.getUserProfile(this.authService.userData.email).subscribe (
+      res => {
+        this.user = res as User;
+        console.log(this.user);
+      },
+      error => {
+        console.warn("there was an error ", error);
+      }
+    )
+  }
 
 
   /* Query Selector Functions go Here */

@@ -57,8 +57,8 @@ import { PuzzleSelectorComponent } from './puzzle-selector/puzzle-selector.compo
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatFormFieldModule,
-    ReactiveFormsModule
+    MatFormFieldModule
+
 
 
   ],
