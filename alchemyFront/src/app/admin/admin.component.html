@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!-- Top navigation -->
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0">
@@ -62,3 +63,172 @@
     </div>
   </div>
   
+=======
+<p>admin works!</p>
+
+<div class="container-lg">
+    <nav class="bg-light">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Add a new user
+                </button>
+  
+                         <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Admin: Add User</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div>
+                                <form [formGroup] = "userGroup">
+                                    <div class="modal-body">
+                                        
+                                        <div class="mb-3">
+                                            <label for="userEmail" class="form-label"><u>User email </u><br><br></label>
+                                            <input type="text" class="form-control" id="userEmail" placeholder="Type user email here">
+                                            <br><br>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="userPW" class="form-label"><u>User password</u><br><br></label>
+                                            <input type="text" class="form-control" id="userPW" placeholder="Type user password here">
+                                            <br><br>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" (click)="submitUser(userGroup)">Add user</button>
+                                    
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+  
+            </li>
+
+            <li class= "nav-item">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                   Update a user
+                </button>
+  
+  <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Admin: Update User</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form [formGroup] = "userGroup">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label for="userEmail" class="form-label"><u>User Email </u><br><br></label>
+                                            <input type="text" class="form-control" id="userEmail" placeholder="Type user email here">
+                                            <br><br>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="userPW" class="form-label"><u>User Password</u><br><br></label>
+                                            <input type="text" class="form-control" id="userPW" placeholder="Type user password here">
+                                            <br><br>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="userDisplayName" class="form-label"><u>User Display Name</u><br><br></label>
+                                            <input type="text" class="form-control" id="userPW" placeholder="Type user display name here">
+                                            <br><br>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="userPhoto" class="form-label"><u>User Photo URL</u><br><br></label>
+                                            <input type="text" class="form-control" id="userPhoto" placeholder="Type user photo url here">
+                                            <br><br>
+                                        </div>
+                                    </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" (click)="updateUser(userGroup)">Update user</button>
+                              
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Delete a user
+                </button>
+  
+  <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Admin: Delete User</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                                <form [formGroup] = "userGroup">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label for="userEmail" class="form-label"><u>User email </u><br><br></label>
+                                            <input type="text" class="form-control" id="userEmail" placeholder="Type user email here">
+                                            <br><br>
+                                        </div>
+                                    </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" (click)="submitUser(userGroup)">Delete user</button>
+                            
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Delete a user
+                </button>
+  
+  <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Admin: Approve Photo</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                                <form [formGroup] = "photoGroup">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label for="adminID" class="form-label"><u>Admin ID </u><br><br></label>
+                                            <input type="text" class="form-control" id="userEmail" placeholder="Type admin ID here">
+                                            <br><br>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="photoID" class="form-label"><u>Photo ID </u><br><br></label>
+                                            <input type="text" class="form-control" id="userEmail" placeholder="Type Photo ID here">
+                                            <br><br>
+                                        </div>
+                                    </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" (click)="approve(photoGroup)">Approve Photo</button>
+                            
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>
+>>>>>>> Stashed changes

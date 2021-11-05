@@ -6,6 +6,7 @@ import { AuthGuard } from './services/guard/auth.guard';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
+  { path: 'admin', component: AdminComponent },
   { path: "", redirectTo: '/sign-in', pathMatch: 'full'}
 ];
 
