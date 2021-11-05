@@ -43,7 +43,7 @@ export class PhotoUploadComponent implements OnInit {
         let puzzleName = this.photoGroup.get("fileName")!.value;
         puzzleName = puzzleName.subst(0,puzzleName.indexOf('.'));
         this.ngZone.run(() => {
-          this.router.navigate(['board',{ data: puzzleName }]);
+          this.router.navigate(['board',{ data: puzzleName  }]);
           });
       }
     )
