@@ -60,4 +60,8 @@ export class ApiService {
     return this.http.post<Object>(url,this.httpHead)
   }
 
+  public deletePhoto(adminId:number, photoId:number, ):Observable<any>{
+    let url = this.photoUrl + `/admin/reject/${adminId}/${photoId}`
+    return this.http.post<Object>(url,this.httpHead)
+  }
 }

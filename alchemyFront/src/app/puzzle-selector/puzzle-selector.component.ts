@@ -31,7 +31,6 @@ export class PuzzleSelectorComponent implements OnInit {
   loadPuzzleList() {
     this.api.getAllPuzzles().subscribe(
       result => {
-        console.log(result);
         for(let i=0; i<result.length; i++){
           if (result[i].approved){
             this.puzzleList.push(result[i])
@@ -39,7 +38,7 @@ export class PuzzleSelectorComponent implements OnInit {
             this.puzzleList.push(result[i])
           }
         }
-        console.log(this.puzzleList);
+
       }
     )
   }

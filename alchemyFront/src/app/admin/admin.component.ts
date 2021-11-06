@@ -45,7 +45,7 @@ export class AdminComponent implements OnInit {
       res => {
 
         for(let i=0; i<res.length; i++){
-          if(!res[i].isApproved){
+          if(!res[i].approved){
             this.photoList.push(res[i]);
           }
         this.photoList.forEach(photo => {
@@ -74,8 +74,18 @@ export class AdminComponent implements OnInit {
   }
 
 public deletePhoto(id:any){
-
+  let aID = this.authServ.userData.userID;
+  let pID = id as number;
+  this.apiServ.deletePhoto(aID, pID).subscribe(
+    res =>{
+      this.photoList.forEach((photo,index) =>{
+        if(photo.id==pID) this.photoList.splice(index,1);
+      })
+    }
+  )
 }
+
+
 public approvePhoto(id:any){
   let aID = this.authServ.userData.userID;
   let pID = id as number;

@@ -33,18 +33,15 @@ export class BoardComponent implements OnInit{
 ngOnInit(): void
 {
   this.puzzleName = this.puzzle.puzzleName;
-  console.log(this.puzzleName)
   if (this.puzzleName != ""){
     this.createPuzzleBoard(this.puzzleName);
   }
 }
 puzzleEventTriggered(puzzle:string){
-  console.log(puzzle);
   this.createPuzzleBoard(puzzle);
 }
 
 createPuzzleBoard(puzzleName:string){
-  console.log(puzzleName);
   this.movies = [];
   this.moviesRand =[];
   this.puzzleExists = true;

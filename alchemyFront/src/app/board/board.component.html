@@ -1,8 +1,6 @@
 <body>
-    <br><br>
-
+    <br>
     <app-puzzle-selector (puzzleSelected)=puzzleEventTriggered($event)></app-puzzle-selector>
-    <br><br><br>
     <div *ngIf="!puzzleExists"></div>
     <div *ngIf="puzzleExists" >
      <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
