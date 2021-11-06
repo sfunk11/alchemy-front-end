@@ -1,20 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-
-import { User } from '../services/user';
-=======
-=======
->>>>>>> main
 import { FormControl, FormGroup } from '@angular/forms';
 import { AdminService } from '../services/admin/admin.service';
 import { User } from '../services/util/user';
 import { AuthenticationService } from '../services/auth/authentication.service';
 import { ApiService } from '../services/api/api.service';
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> main
+
 
 @Component({
   selector: 'app-admin',
@@ -23,14 +13,6 @@ import { ApiService } from '../services/api/api.service';
 })
 export class AdminComponent implements OnInit {
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-
-
-  constructor() { }
-=======
-=======
->>>>>>> main
   userList: User[] = [];
 
   userGroup = new FormGroup({
@@ -47,19 +29,10 @@ export class AdminComponent implements OnInit {
     public adServ:AdminService,
     public authServ: AuthenticationService,
     public apiServ: ApiService) { }
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> main
+
 
   ngOnInit(): void {
   }
-
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> main
   public submitUser(user: FormGroup){
 
     console.log("Adding user " + user);
@@ -90,4 +63,4 @@ export class AdminComponent implements OnInit {
     let pID = photo.get("photoID")?.value;
     this.apiServ.approvePhoto(aID, pID)
   }
->>>>>>> Stashed changes}
+}
