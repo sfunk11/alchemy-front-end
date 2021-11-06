@@ -49,6 +49,8 @@
                 <button class="btn btn-primary text-center" (click)="submit(userInfo)" #saveProfile>Save Changes</button>
               </div>
 
+              <app-admin *ngIf="isAdmin"></app-admin>
+
             </div>
 
           </div>

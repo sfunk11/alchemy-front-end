@@ -10,8 +10,8 @@ import { User } from '../util/user';
 })
 export class ApiService {
 
-  private urlBase = "http://ec2-52-14-196-156.us-east-2.compute.amazonaws.com:9001";
-  // private urlBase = "http://localhost:9001";
+  // private urlBase = "http://ec2-52-14-196-156.us-east-2.compute.amazonaws.com:9001";
+  private urlBase = "http://localhost:9001";
   private userUrl = this.urlBase + "/users";
   private photoUrl = this.urlBase + "/photos";
   private httpHead = {
@@ -32,10 +32,6 @@ export class ApiService {
     return this.http.post<String>(this.userUrl, user, this.httpHead);
   }
 
-  public deleteUser(user:any): Observable<Object>{
-
-    return this.http.delete<Object>(user);
-  }
   public getAllUsers() : Observable<User[]>{
 
     return this.http.get<User[]>(this.userUrl, this.httpHead);
