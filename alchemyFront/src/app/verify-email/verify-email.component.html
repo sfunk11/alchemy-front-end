@@ -19,7 +19,8 @@
 
 
     <div class="redirectToLogin">
-      <span>Go back to?<a class="redirect" routerLink="/sign-in"> Sign in</a></span>
+      <span *ngIf="!isAdmin">Go back to?<a class="redirect" routerLink="/sign-in"> Sign in</a></span>
+      <span *nfIf="isAdmin">Go back to?<a class="redirect" routerLink="/profile"> Profile</a></span>
     </div>
 
   </div>

@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'board', component: BoardComponent, canActivate:[AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, canActivate:[AuthGuard]},
   { path: "", redirectTo: '/sign-in', pathMatch: 'full'}
 ];
 

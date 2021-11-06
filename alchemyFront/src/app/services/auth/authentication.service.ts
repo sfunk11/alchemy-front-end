@@ -3,6 +3,8 @@ import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { User } from "../util/user";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { ApiService } from '../api/api.service';
+import { PuzzleService } from '../puzzle/puzzle.service';
 
 
 
@@ -17,7 +19,9 @@ export class AuthenticationService {
     private afAuth: AngularFireAuth,
     private afStore: AngularFirestore,
     private router: Router,
-    private ngZone: NgZone )
+    private ngZone: NgZone,
+    private api: ApiService,
+    private puzServ:PuzzleService )
     {
     this.afAuth.authState.subscribe( user => {
       if (user) {
@@ -73,9 +77,17 @@ export class AuthenticationService {
         this.router.navigate(['profile']);
         });
         this.SetUserData(res.user);
+        this.api.getUserProfile(res.user!.email!).subscribe(
+          res=> {
+            this.userData.userID = res.userID;
+            this.userData.displayName= res.displayName;
+            this.userData.roleID = res.roleID;
+
+          })
       }).catch((error) => {
         window.alert(error.message)
       })
+
   }
 
   SignUp(email:string, password: string) {
@@ -123,6 +135,7 @@ export class AuthenticationService {
 
   SignOut() {
     return this.afAuth.signOut().then(() => {
+      this.puzServ.puzzleName='';
       this.router.navigate(['sign-in']);
     })
   }
