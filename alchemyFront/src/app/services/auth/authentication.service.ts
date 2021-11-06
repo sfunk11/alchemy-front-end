@@ -21,15 +21,21 @@ export class AuthenticationService {
     {
     this.afAuth.authState.subscribe( user => {
       if (user) {
-        this.userData = user;
-        localStorage.setItem('user',JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user')!);
-        //add logic to save user for session
+        this.userData= {
+          uid:"",
+          userID: 0,
+          email: user.email,
+          displayName: user.displayName,
+          f_name: '',
+          l_name: '',
+          roleID: 0,
+          photoURL: user.photoURL,
+          emailVerified: user.emailVerified
+        }
+
       } else {
         this.userData = null;
-        localStorage.setItem('user', "");
-        JSON.parse(localStorage.getItem('user')!);
-        //add logic to clear user for session
+
       }
     })
   }
@@ -38,8 +44,12 @@ export class AuthenticationService {
     const userRef: AngularFirestoreDocument<any> = this.afStore.doc(`users/${user.uid}`);
     const userData: User = {
       uid: user.uid,
+      userID: 0,
       email: user.email,
       displayName: user.displayName,
+      f_name: '',
+      l_name: '',
+      roleID: 0,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified
     }
@@ -89,8 +99,13 @@ export class AuthenticationService {
   }
 
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user')!);
-    return((user !==null && user.emailVerified !==false) ?true : false);
+    if (this.userData == undefined || this.userData == null){
+      return false;
+    }else if(this.userData.emailVerified==false){
+        return false;
+      }
+
+    return true;
   }
 
   AuthLogin(provider:any) {
@@ -106,10 +121,8 @@ export class AuthenticationService {
   }
 
 
-
   SignOut() {
     return this.afAuth.signOut().then(() => {
-      localStorage.removeItem('user');
       this.router.navigate(['sign-in']);
     })
   }

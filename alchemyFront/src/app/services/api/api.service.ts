@@ -11,6 +11,7 @@ import { User } from '../util/user';
 export class ApiService {
 
   private urlBase = "http://ec2-52-14-196-156.us-east-2.compute.amazonaws.com:9001";
+  // private urlBase = "http://localhost:9001";
   private userUrl = this.urlBase + "/users";
   private photoUrl = this.urlBase + "/photos";
   private httpHead = {
@@ -22,14 +23,13 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  public getUserProfile(username:string) : Observable<User>{
-    let url = this.userUrl + `/${username}`;
+  public getUserProfile(email:string) : Observable<User>{
+    let url = this.userUrl + "/email/" + email;
     return this.http.get<User>(url, this.httpHead);
   }
 
   public updateUserProfile(user:any): Observable<Object>{
-
-    return this.http.post<Object>(this.userUrl, user, this.httpHead);
+    return this.http.post<String>(this.userUrl, user, this.httpHead);
   }
 
   public deleteUser(user:any): Observable<Object>{
@@ -41,9 +41,13 @@ export class ApiService {
     return this.http.get<User[]>(this.userUrl, this.httpHead);
   }
 
-  public uploadPhoto(photo: any): Observable<any> {
-    let newPhoto: Photo = photo;
-    return this.http.post<Object>(this.photoUrl, newPhoto, this.httpHead);
+  public uploadPhoto(photo: FormData): Observable<any> {
+    let httpHead = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*'
+      })
+    }
+    return this.http.post<Object>(this.photoUrl, photo, httpHead);
   }
 
   public getAllPuzzles(): Observable<Photo[]>{

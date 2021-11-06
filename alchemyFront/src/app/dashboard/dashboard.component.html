@@ -13,13 +13,14 @@
         <a routerLink="/profile" class="nav-link active">Profile</a>
       </li>
       <li class="nav-item">
-        <a routerLink="/board" class="nav-link active">Puzzles</a>
+        <a routerLink="/board" [state]= "{ data: 'image22' }"class="nav-link active">Puzzles</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/upload" class="nav-link active">Upload Photo for Custom Puzzle</a>
       </li>
 
       <!-- Additional links? Gameboard/categories...?-->
-      <li class="nav-item">
-        Placeholder
-      </li>
+
       <li class="nav-item">
         Placeholder
       </li>

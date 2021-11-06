@@ -1,0 +1,11 @@
+<div ng-app="puzzleSelect" ng-controller="puzzleCtrl">
+<select ng-model="selectedName" ng-options="pic.title for pic in puzzleList"></select>
+
+</div>
+
+<script>
+  var app = angular.module('puzzleSelect', []);
+  app.controller = 'puzzleCtrl', (puzzleList) =>{
+
+  }
+</script>

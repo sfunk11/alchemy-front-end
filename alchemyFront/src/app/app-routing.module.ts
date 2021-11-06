@@ -9,6 +9,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { AdminComponent } from './admin/admin.component';
+import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
+
 
 
 
@@ -17,6 +19,7 @@ const routes: Routes = [
   { path: 'register-user', component: SignUpComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate:[AuthGuard] },
+  { path: 'upload', component: PhotoUploadComponent, canActivate:[AuthGuard] },
   { path: 'board', component: BoardComponent, canActivate:[AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },

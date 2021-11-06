@@ -1,0 +1,22 @@
+.example-form {
+    text-align: center;
+    /* min-width: 150px;
+    max-width: 500px;
+    width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+  
+  .example-full-width {
+    /* width: 100%; */
+  }
+
+  .inputphotoz {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  }
+

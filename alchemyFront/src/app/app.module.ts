@@ -19,7 +19,16 @@ import { DragDropModule } from '@angular/cdk/drag-drop'; //installed in alchemyF
 import { ApiService } from './services/api/api.service';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
+import { PuzzleService } from './services/puzzle/puzzle.service';
+import { PuzzleSelectorComponent } from './puzzle-selector/puzzle-selector.component';
+
+
 
 @NgModule({
   declarations: [
@@ -31,9 +40,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     VerifyEmailComponent,
     BoardComponent,
     ProfileComponent,
-    BoardComponent,
-    ProfileComponent,
     AdminComponent
+    FileUploadComponent,
+    PhotoUploadComponent,
+    PuzzleSelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -45,12 +55,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AppRoutingModule,
     RouterModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     BrowserAnimationsModule,
-    DragDropModule
+    DragDropModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatFormFieldModule
+
+
+
   ],
-  providers: [AuthenticationService, ApiService],
+  providers: [AuthenticationService, ApiService, PuzzleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
