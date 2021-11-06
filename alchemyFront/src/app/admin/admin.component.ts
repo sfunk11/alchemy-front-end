@@ -14,6 +14,7 @@ import { Photo } from '../services/util/photo';
 })
 export class AdminComponent implements OnInit {
 
+  isAdmin = this.authServ.userData.roleID
   photoList= [] as Photo[];
 
   userGroup = new FormGroup({

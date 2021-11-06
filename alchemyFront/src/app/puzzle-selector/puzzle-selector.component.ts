@@ -18,7 +18,7 @@ export class PuzzleSelectorComponent implements OnInit {
   puzzleSelected= new EventEmitter<string>();
 
   onPuzzleSelect(puzzle:string){
-    console.log("puzzle selected");
+    console.log("puzzle selected: " + puzzle);
     this.puzServ.puzzleName = puzzle;
     this.puzzleSelected.emit(this.puzServ.puzzleName);
   }
@@ -33,7 +33,7 @@ export class PuzzleSelectorComponent implements OnInit {
       result => {
         console.log(result);
         for(let i=0; i<result.length; i++){
-          if (result[i].isApproved){
+          if (result[i].approved){
             this.puzzleList.push(result[i])
           }else if (result[i].uploader.email == this.auth.userData.email){
             this.puzzleList.push(result[i])

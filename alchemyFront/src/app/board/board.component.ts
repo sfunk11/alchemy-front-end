@@ -44,6 +44,9 @@ puzzleEventTriggered(puzzle:string){
 }
 
 createPuzzleBoard(puzzleName:string){
+  console.log(puzzleName);
+  this.movies = [];
+  this.moviesRand =[];
   this.puzzleExists = true;
   for (let  i = 0; i<10; i++)
   {
@@ -72,7 +75,6 @@ createPuzzleBoard(puzzleName:string){
     t = this.moviesRand[m];
     this.moviesRand[m] = this.moviesRand[i];
     this.moviesRand[i] = t;
-    console.log(this.moviesRand[i]);
   }
 }
 
