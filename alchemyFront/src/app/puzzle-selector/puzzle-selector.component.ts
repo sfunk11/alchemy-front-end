@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ApiService } from '../services/api/api.service';
 import { AuthenticationService } from '../services/auth/authentication.service';
+import { PuzzleService } from '../services/puzzle/puzzle.service';
 import { Photo } from '../services/util/photo';
 
 @Component({
@@ -10,12 +11,22 @@ import { Photo } from '../services/util/photo';
 })
 export class PuzzleSelectorComponent implements OnInit {
   puzzleList = [] as Photo[];
+  selectedPuzzle = {} as Photo;
+  constructor(private api:ApiService, private auth:AuthenticationService, private puzServ:PuzzleService) { }
 
-  constructor(private api:ApiService, private auth:AuthenticationService) { }
+  @Output()
+  puzzleSelected= new EventEmitter<string>();
+
+  onPuzzleSelect(puzzle:string){
+    console.log("puzzle selected");
+    this.puzServ.puzzleName = puzzle;
+    this.puzzleSelected.emit(this.puzServ.puzzleName);
+  }
 
   ngOnInit(): void {
     this.loadPuzzleList();
   }
+
 
   loadPuzzleList() {
     this.api.getAllPuzzles().subscribe(
@@ -32,5 +43,6 @@ export class PuzzleSelectorComponent implements OnInit {
       }
     )
   }
+
 
 }

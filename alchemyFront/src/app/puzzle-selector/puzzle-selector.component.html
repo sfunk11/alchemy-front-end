@@ -1,11 +1,9 @@
-<div ng-app="puzzleSelect" ng-controller="puzzleCtrl">
-<select ng-model="selectedName" ng-options="pic.title for pic in puzzleList"></select>
-
+<div class="form-group">
+  <label for="puzzleSelector">Select a Puzzle</label>
+  <select class="form-control" #puzzleSelector (change)= 'onPuzzleSelect(puzzleSelector.value)'>
+    <option> ---------- </option>
+    <option *ngFor="let puzzle of puzzleList" value={{puzzle.imageFileName}}>{{puzzle.title}}</option>
+  </select>
 </div>
+<form>
 
-<script>
-  var app = angular.module('puzzleSelect', []);
-  app.controller = 'puzzleCtrl', (puzzleList) =>{
-
-  }
-</script>

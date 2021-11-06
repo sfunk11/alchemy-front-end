@@ -9,7 +9,7 @@
   <!-- Sidebar navigation -->
 <div class="container-fluid">
     <div class="row">
-  
+
       <nav class="col-md-2 d-md-block bg-light sidebar">
         <div class="sidebar-sticky">
           <ul class="nav flex-column">
@@ -20,23 +20,23 @@
             </li>
             <!-- Calling SignOut() Api from AuthService -->
             <li class="nav-item">
-              <a class="nav-link" (click)="authService.SignOut()">
+              <a class="nav-link" (click)="authServ.SignOut()">
                 <i class="fas fa-sign-out-alt"></i>Log out
               </a>
             </li>
           </ul>
         </div>
       </nav>
-  
+
       <!-- Main content -->
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="inner-adjust">
-  
+
           <div class="pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Admin Profile</h1>
           </div>
           <!-- Show user data when logged in -->
-          <div class="row" *ngIf="authService.userData as user">
+          <div class="row" *ngIf="authServ.userData as user">
             <div class="col-md-12">
               <div class="media">
                 <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
@@ -56,10 +56,10 @@
               </div>
             </div>
           </div>
-  
+
         </div>
       </main>
-  
+
     </div>
   </div>
 <p>admin works!</p>
@@ -72,7 +72,7 @@
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Add a new user
                 </button>
-  
+
                          <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -84,7 +84,7 @@
                             <div>
                                 <form [formGroup] = "userGroup">
                                     <div class="modal-body">
-                                        
+
                                         <div class="mb-3">
                                             <label for="userEmail" class="form-label"><u>User email </u><br><br></label>
                                             <input type="text" class="form-control" id="userEmail" placeholder="Type user email here">
@@ -99,21 +99,21 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         <button type="button" class="btn btn-primary" (click)="submitUser(userGroup)">Add user</button>
-                                    
+
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-  
+
             </li>
 
             <li class= "nav-item">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                    Update a user
                 </button>
-  
+
   <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -148,7 +148,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="button" class="btn btn-primary" (click)="updateUser(userGroup)">Update user</button>
-                              
+
                             </div>
                             </form>
                         </div>
@@ -161,7 +161,7 @@
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Delete a user
                 </button>
-  
+
   <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -181,7 +181,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="button" class="btn btn-primary" (click)="submitUser(userGroup)">Delete user</button>
-                            
+
                             </div>
                             </form>
                         </div>
@@ -194,7 +194,7 @@
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Delete a user
                 </button>
-  
+
   <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -219,7 +219,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="button" class="btn btn-primary" (click)="approve(photoGroup)">Approve Photo</button>
-                            
+
                             </div>
                             </form>
                         </div>

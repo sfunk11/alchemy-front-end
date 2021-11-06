@@ -19,7 +19,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop'; //installed in alchemyF
 import { ApiService } from './services/api/api.service';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
-import { FileUploadComponent } from './file-upload/file-upload.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -40,8 +39,7 @@ import { PuzzleSelectorComponent } from './puzzle-selector/puzzle-selector.compo
     VerifyEmailComponent,
     BoardComponent,
     ProfileComponent,
-    AdminComponent
-    FileUploadComponent,
+    AdminComponent,
     PhotoUploadComponent,
     PuzzleSelectorComponent
   ],

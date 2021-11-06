@@ -15,9 +15,9 @@ import { FormGroup } from '@angular/forms';
 export class AdminService {
 
 private urlBase = "http://ec2-52-14-196-156.us-east-2.compute.amazonaws.com:9001";
- 
-private userUrl = this.urlBase + "/users";
 
+private userUrl = this.urlBase + "/users";
+private user = {} as User;
 private httpHead = {
     headers: new HttpHeaders({
         'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'
@@ -28,7 +28,6 @@ private httpHead = {
         private authService: AuthenticationService,
         private apiServ: ApiService,
         private http: HttpClient,
-        private user: User
       ){ }
 
 }
