@@ -31,6 +31,11 @@ export class ApiService {
   public updateUserProfile(user:any): Observable<Object>{
     return this.http.post<String>(this.userUrl, user, this.httpHead);
   }
+
+  public deleteUser(user:any): Observable<Object>{
+
+    return this.http.delete<Object>(user);
+  }
   public getAllUsers() : Observable<User[]>{
 
     return this.http.get<User[]>(this.userUrl, this.httpHead);

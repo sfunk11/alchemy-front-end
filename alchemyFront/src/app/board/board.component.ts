@@ -6,6 +6,7 @@ import { PuzzleService } from '../services/puzzle/puzzle.service';
 import { AuthenticationService } from '../services/auth/authentication.service';
 
 
+
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -16,6 +17,7 @@ export class BoardComponent implements OnInit{
   wonGame : boolean = false;
   private puzzleName:string = '';
   puzzleList = [] as Photo[];
+  puzzleExists = false;
   // ordered array of pics
   public movies:string[] = [];
   // disordered array of pics
@@ -30,12 +32,19 @@ export class BoardComponent implements OnInit{
 
 ngOnInit(): void
 {
-  this.loadPuzzleList();
   this.puzzleName = this.puzzle.puzzleName;
-  // this.createPuzzleBoard(this.puzzleName);
+  console.log(this.puzzleName)
+  if (this.puzzleName != ""){
+    this.createPuzzleBoard(this.puzzleName);
+  }
+}
+puzzleEventTriggered(puzzle:string){
+  console.log(puzzle);
+  this.createPuzzleBoard(puzzle);
 }
 
 createPuzzleBoard(puzzleName:string){
+  this.puzzleExists = true;
   for (let  i = 0; i<10; i++)
   {
     // concat to get each image slice from bucket url, nice!
@@ -66,25 +75,6 @@ createPuzzleBoard(puzzleName:string){
     console.log(this.moviesRand[i]);
   }
 }
-// need to build string array of the list of image names in the buckets
-
-  loadPuzzleList() {
-    this.api.getAllPuzzles().subscribe(
-      result => {
-        console.log(result);
-        for(let i=0; i<result.length; i++){
-          if (result[i].isApproved){
-            this.puzzleList.push(result[i])
-          }else if (result[i].uploader.email == this.auth.userData.email){
-            this.puzzleList.push(result[i])
-          }
-        }
-        console.log(this.puzzleList);
-      }
-    )
-  }
-
-
 
   drop(event: CdkDragDrop<string[]>)
   {
