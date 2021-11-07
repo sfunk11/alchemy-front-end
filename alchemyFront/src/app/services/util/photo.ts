@@ -11,4 +11,5 @@ export interface Photo {
   uploader: User;
   isApproved:boolean;
   url?:string
+  makePublic?:boolean;
 }

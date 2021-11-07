@@ -64,4 +64,11 @@ export class ApiService {
     let url = this.photoUrl + `/admin/reject/${adminId}/${photoId}`
     return this.http.post<Object>(url,this.httpHead)
   }
+
+  public togglePublic(photo:Photo, email: string): Observable<any>{
+    let url = this.photoUrl + `/${photo.id}/${email}/${photo.makePublic}`;
+    return this.http.put<Object>(url, this.httpHead)
+  }
+
+
 }
