@@ -20,28 +20,14 @@ export class PuzzleSelectorComponent implements OnInit {
   onPuzzleSelect(puzzle:string){
     console.log("puzzle selected: " + puzzle);
     this.puzServ.puzzleName = puzzle;
-    this.puzzleSelected.emit(this.puzServ.puzzleName);
+    this.puzzleSelected.emit(this.puzServ.puzzleData);
   }
 
   ngOnInit(): void {
-    this.loadPuzzleList();
+    this.puzServ.loadPuzzleList(this.auth.userData.email);
+    this.puzzleList = this.puzServ.puzzleList;
   }
 
-
-  loadPuzzleList() {
-    this.api.getAllPuzzles().subscribe(
-      result => {
-        for(let i=0; i<result.length; i++){
-          if (result[i].approved){
-            this.puzzleList.push(result[i])
-          }else if (result[i].uploader.email == this.auth.userData.email){
-            this.puzzleList.push(result[i])
-          }
-        }
-
-      }
-    )
-  }
 
 
 }

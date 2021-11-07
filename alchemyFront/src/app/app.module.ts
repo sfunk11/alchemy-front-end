@@ -26,6 +26,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 import { PuzzleService } from './services/puzzle/puzzle.service';
 import { PuzzleSelectorComponent } from './puzzle-selector/puzzle-selector.component';
+import { PhotoDisplayComponent } from './photo-display/photo-display.component';
 
 
 
@@ -41,7 +42,8 @@ import { PuzzleSelectorComponent } from './puzzle-selector/puzzle-selector.compo
     ProfileComponent,
     AdminComponent,
     PhotoUploadComponent,
-    PuzzleSelectorComponent
+    PuzzleSelectorComponent,
+    PhotoDisplayComponent
   ],
   imports: [
     BrowserModule,

@@ -32,8 +32,8 @@ export class BoardComponent implements OnInit{
 
 ngOnInit(): void
 {
-  this.puzzleName = this.puzzle.puzzleName;
-  if (this.puzzleName != ""){
+  this.puzzleName = this.puzzle.puzzleData;
+  if (this.puzzleName != "" || this.puzzleName == undefined){
     this.createPuzzleBoard(this.puzzleName);
   }
 }

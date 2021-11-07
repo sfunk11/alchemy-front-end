@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
       this.getUser();
+
       this.setAdmin();
   }
 
@@ -43,6 +44,7 @@ export class ProfileComponent implements OnInit {
     response => {
 
         this.user = response as User;
+        console.log(this.user);
         this.setAdmin();
       },
       error =>{
