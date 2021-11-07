@@ -25,7 +25,7 @@ export class PuzzleService {
     this.api.getAllPuzzles().subscribe(
       result => {
         for(let i=0; i<result.length; i++){
-          if (result[i].approved){
+          if (result[i].approved && result[i].makePublic){
             this.puzzleList.push(result[i])
           }else if (result[i].uploader.email == email){
             this.puzzleList.push(result[i])
@@ -59,7 +59,7 @@ export class PuzzleService {
       res => {
 
         for(let i=0; i<res.length; i++){
-          if(!res[i].approved){
+          if(!res[i].approved && res[i].makePublic){
             this.unapprovedPhotos.push(res[i]);
           }
         this.unapprovedPhotos.forEach(photo => {

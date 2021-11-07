@@ -29,8 +29,15 @@ export class PhotoUploadComponent implements OnInit {
   onChange(event: any) {
     this.file = event.target.files[0];
 }
-  public uploadPhoto(photo:FormGroup){
+ onCheck(event:any){
+    if (event.target.checked) {
+      this.photoGroup.patchValue({makePublic: true})
+    }else {
+      this.photoGroup.patchValue({makePublic: false})
+    }
+ }
 
+  uploadPhoto(photo:FormGroup){
     this.photoGroup.patchValue({uploader: this.authService.userData.email})
     let formData = new FormData();
     formData.append("file", this.file, this.photoGroup.get("fileName")!.value);
@@ -38,6 +45,7 @@ export class PhotoUploadComponent implements OnInit {
     formData.append("description", this.photoGroup.get("description")!.value);
     formData.append("fileName", this.photoGroup.get("fileName")!.value);
     formData.append("uploader", this.photoGroup.get("uploader")!.value);
+    formData.append("makePublic", this.photoGroup.get("makePublic")!.value);
     this.apiService.uploadPhoto(formData).subscribe(
       response => {
         console.log(response);

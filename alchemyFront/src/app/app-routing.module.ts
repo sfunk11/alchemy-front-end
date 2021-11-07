@@ -14,10 +14,10 @@ import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 
 
 
+
 const routes: Routes = [
   { path: "sign-in", component: SignInComponent},
   { path: 'register-user', component: SignUpComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate:[AuthGuard] },
   { path: 'upload', component: PhotoUploadComponent, canActivate:[AuthGuard] },
   { path: 'board', component: BoardComponent, canActivate:[AuthGuard] },
