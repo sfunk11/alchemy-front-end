@@ -21,6 +21,7 @@ export class PuzzleService {
   }
 
   loadPuzzleList(email:string) {
+    this.puzzleList=[];
     this.api.getAllPuzzles().subscribe(
       result => {
         for(let i=0; i<result.length; i++){
@@ -38,6 +39,7 @@ export class PuzzleService {
   }
 
  loadPersonalPhotoList(email:string) {
+  this.personalPhotoList = []
   this.api.getAllPuzzles().subscribe(
     result => {
       for(let i=0; i<result.length; i++){
@@ -52,6 +54,7 @@ export class PuzzleService {
   }
 
   loadUnapprovedPhotos() {
+    this.unapprovedPhotos=[];
     this.api.getAllPhotos().subscribe(
       res => {
 
