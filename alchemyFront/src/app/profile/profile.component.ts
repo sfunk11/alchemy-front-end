@@ -16,9 +16,13 @@ export class ProfileComponent implements OnInit {
   constructor(public authService: AuthenticationService, private apiService: ApiService) { }
 
   public isAdmin = false;
+  public showForm = false;
 
   ngOnInit(): void {
       this.getUser();
+      if (this.authService.userData.displayName == ''){
+        this.showForm = true;
+      }
       this.setAdmin();
   }
 
@@ -43,7 +47,9 @@ export class ProfileComponent implements OnInit {
     response => {
 
         this.user = response as User;
+        console.log(this.user);
         this.setAdmin();
+        this.showForm= false;
       },
       error =>{
         console.warn("there was an error ", error);
@@ -61,6 +67,10 @@ export class ProfileComponent implements OnInit {
         console.warn("there was an error ", error);
       }
     )
+  }
+
+  toggleForm() {
+    this.showForm = !this.showForm;
   }
 
   setAdmin() {

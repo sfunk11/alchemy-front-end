@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AdminService } from '../services/admin/admin.service';
-import { User } from '../services/util/user';
 import { AuthenticationService } from '../services/auth/authentication.service';
 import { ApiService } from '../services/api/api.service';
 import { Photo } from '../services/util/photo';
+import { PuzzleService } from '../services/puzzle/puzzle.service';
 
 
 @Component({
@@ -35,27 +34,16 @@ export class AdminComponent implements OnInit {
   })
 
   constructor(
-    public adServ:AdminService,
     public authServ: AuthenticationService,
-    public apiServ: ApiService) { }
+    public apiServ: ApiService,
+    public puzServ: PuzzleService) { }
 
 
   ngOnInit(): void {
-    this.apiServ.getAllPhotos().subscribe(
-      res => {
-
-        for(let i=0; i<res.length; i++){
-          if(!res[i].isApproved){
-            this.photoList.push(res[i]);
-          }
-        this.photoList.forEach(photo => {
-          photo.url = "https://puzzle-alchemy-pieces.s3.us-east-2.amazonaws.com/" + photo.imageFileName;
-        });
-
-        }
-      }
-    )
+    this.puzServ.loadUnapprovedPhotos();
+    this.photoList = this.puzServ.unapprovedPhotos;
   }
+
   public submitUser(user: FormGroup){
 
     let email = user.get("userEmail")?.value;
@@ -74,8 +62,18 @@ export class AdminComponent implements OnInit {
   }
 
 public deletePhoto(id:any){
-
+  let aID = this.authServ.userData.userID;
+  let pID = id as number;
+  this.apiServ.deletePhoto(aID, pID).subscribe(
+    res =>{
+      this.photoList.forEach((photo,index) =>{
+        if(photo.id==pID) this.photoList.splice(index,1);
+      })
+    }
+  )
 }
+
+
 public approvePhoto(id:any){
   let aID = this.authServ.userData.userID;
   let pID = id as number;

@@ -1,0 +1,10 @@
+
+
+
+<div class="card" style="width: 18rem;" *ngFor="let puzzle of personalList">
+  <img class="card-img-top" src=puzzle.url alt=puzzle.title>
+  <div class="card-body">
+    <h5 class="card-title">{{puzzle.title}}</h5>
+    <p class="card-text">{{puzzle.description}}</p>
+  </div>
+</div>
