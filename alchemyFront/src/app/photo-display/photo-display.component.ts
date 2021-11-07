@@ -14,9 +14,12 @@ export class PhotoDisplayComponent implements OnInit {
   constructor(private api: ApiService, private puzServ: PuzzleService, private auth: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.loadPersonalList();
   }
 
   loadPersonalList(){
+    console.log(this.auth.userData);
+    this.personalList = [];
     this.puzServ.loadPersonalPhotoList(this.auth.userData.email);
     this.personalList = this.puzServ.personalPhotoList;
     console.log(this.personalList);
