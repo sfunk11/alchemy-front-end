@@ -1,19 +1,19 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand text-center bg-info font-weight-bold my-3" routerlink="/profile">Puzzle Alchemy</a>
+  <a class="navbar-brand p-3 text-center bg-dark font-weight-bold my-3" routerlink="/profile">Puzzle Alchemy</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav me-auto ">
+    <ul class="navbar-nav me-auto">
       <li class="nav-item ">
-        <a class="nav-link" routerLink="/profile">Profile </a>
+        <a class="nav-link text-dark font-weight-bold" routerLink="/profile">Profile </a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" routerLink="/board">Puzzles</a>
+        <a class="nav-link text-dark font-weight-bold" routerLink="/board">Puzzles</a>
       </li>
       </ul>
-      <div class="nav-item ms-auto">
+      <div class="nav-item  p-1 ms-auto">
         <button class="btn btn-outline-primary" (click)="authService.SignOut()">Log Out</button>
     </div>
 
