@@ -9,12 +9,13 @@ body {
   margin: 0 auto;
   text-align: center;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: #444444;
-  color: #000000;
+  background-image: url("/assets/altbg-pastel.jpg");
+  background-color: #585ea5;
+  color: #5c5c5c;
 }
 
 div, nav {
-  background-color: #b4b3b3;
+  background-color: #CBDEFF;
 }
 
 a {
