@@ -19,7 +19,11 @@ export class PhotoUploadComponent implements OnInit {
     title: new FormControl(""),
     description: new FormControl("") ,
     fileName: new FormControl(""),
-    uploader: new FormControl("")
+    uploader: new FormControl(""),
+    email: new FormControl(''),
+    makePublic: new FormControl(false)
+
+
   })
   file: File = {} as File;
 
@@ -29,10 +33,13 @@ export class PhotoUploadComponent implements OnInit {
   onChange(event: any) {
     this.file = event.target.files[0];
 }
+
  onCheck(event:any){
-    if (event.target.checked) {
-      this.photoGroup.patchValue({makePublic: true})
-    }else {
+    let checkbox = event.target as HTMLInputElement;
+
+  if (checkbox.checked) {
+    this.photoGroup.patchValue({makePublic: true})
+    } else {
       this.photoGroup.patchValue({makePublic: false})
     }
  }
@@ -57,5 +64,6 @@ export class PhotoUploadComponent implements OnInit {
       }
     )
   }
+
 
 }
