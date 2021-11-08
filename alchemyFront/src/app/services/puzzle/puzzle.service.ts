@@ -22,7 +22,7 @@ export class PuzzleService {
 
   loadPuzzleList(email:string) {
     this.puzzleList=[];
-    this.api.getAllPuzzles().subscribe(
+    this.api.getAllPhotos().subscribe(
       result => {
         for(let i=0; i<result.length; i++){
           if (result[i].approved && result[i].makePublic){
@@ -40,7 +40,7 @@ export class PuzzleService {
 
  loadPersonalPhotoList(email:string) {
   this.personalPhotoList = []
-  this.api.getAllPuzzles().subscribe(
+  this.api.getAllPhotos().subscribe(
     result => {
       for(let i=0; i<result.length; i++){
         if (result[i].uploader.email == email){
