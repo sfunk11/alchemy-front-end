@@ -27,8 +27,7 @@ private httpHead = {
     constructor(
         private authService: AuthenticationService,
         private apiServ: ApiService,
-        private http: HttpClient,
-        private user: User
+        private http: HttpClient
       ){ }
 
 }

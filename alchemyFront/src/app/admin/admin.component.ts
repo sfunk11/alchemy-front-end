@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit {
 
   constructor(
     public adServ:AdminService,
-    public authServ: AuthenticationService,
+    public authService: AuthenticationService,
     public apiServ: ApiService) { }
 
 
@@ -38,7 +38,7 @@ export class AdminComponent implements OnInit {
     console.log("Adding user " + user);
     let email = user.get("userEmail")?.value;
     let pw = user.get("userPW")?.value;
-    this.authServ.SignUp(email, pw);
+    this.authService.SignUp(email, pw);
     
   }
 
