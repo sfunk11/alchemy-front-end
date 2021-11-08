@@ -34,6 +34,7 @@ export class AdminComponent implements OnInit {
   })
 
   constructor(
+
     public authServ: AuthenticationService,
     public apiServ: ApiService,
     public puzServ: PuzzleService) { }
