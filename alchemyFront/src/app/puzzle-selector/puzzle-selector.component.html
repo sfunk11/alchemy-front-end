@@ -1,4 +1,5 @@
-<div class="form-group">
+<div class = selector>
+<div class="form-group selectGroup">
   <label for="puzzleSelector">Select a Puzzle</label>
   <select class="form-control" #puzzleSelector (change)= 'onPuzzleSelect(puzzleSelector.value)'>
     <option> ---------- </option>
@@ -6,6 +7,6 @@
   </select>
 </div>
 <p>OR <span><a routerLink="/upload" class="nav-link active">Upload Photo for Custom Puzzle</a></span></p>
-<form>
+</div>
 
 
