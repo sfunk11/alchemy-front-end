@@ -1,0 +1,20 @@
+
+<div class = "container">
+<div class = "row" >
+<div class="card p-3 mt-3 ml-3 mr-3 mb-3 col-med-3" style="width: 18rem;" *ngFor="let puzzle of personalList">
+  <img class="card-img-top"  src={{puzzle.url}} alt=puzzle.title>
+  <div class="card-body">
+    <h5 class="card-title">{{puzzle.title}}</h5>
+    <p class="card-text">{{puzzle.description}}</p>
+    <p *ngIf=!puzzle.makePublic>This photo is private.</p>
+    <p *ngIf=puzzle.makePublic>This photo is available as a public puzzle.</p>
+    <div class="form-check">
+      <input class="checkbox form-check-input" type="checkbox" (change)=togglePublic($event.target) value={{personalList.indexOf(puzzle)}}.checked id={{personalList.indexOf(puzzle)}}>
+      <label class="form-check-label" for="publicCheck">
+       Change public access level.
+      </label>
+    </div>
+  </div>
+</div>
+</div>
+</div>

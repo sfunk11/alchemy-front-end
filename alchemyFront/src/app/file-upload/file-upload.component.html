@@ -1,0 +1,49 @@
+<body style="background-color:rgb(88,88,88);">
+    <br><br><br><br><br>   
+
+<div class="inputphotoz">
+
+<div class="text-center">
+    <input class="form-control" type="file" (change)="onChange($event)">
+    <button (click)="onUpload()" class="btn btn-success">Upload</button>
+</div>
+  
+<!-- Shareable short link of  uoloaded file -->
+<div class="container text-center jumbotron" *ngIf="shortLink">
+    <h2> Visit Here</h2>
+    <a href="{{shortLink}}">{{shortLink}}</a>
+</div>
+  
+<!--Flag variable is used here-->
+<div class="container" *ngIf="loading">
+<h3>Loading ...</h3>
+</div>
+
+</div>
+
+
+
+<!-- [formGroup]="ImageInfoGroup"  formControlName="photoName" formControlName="photoEmail" formControlName="photoDescrip" -->
+<br><br><br><br><br>
+<form class="example-form" >
+
+ 
+    <p> File Name </p>
+    <input type="text" name="fileName" [(ngModel)]="photoName">
+
+    <br>
+    <p> Email </p>
+    <input type="text" name="fileEmail" [(ngModel)]="photoEmail">
+     
+    <br>
+    <p> Description </p>
+    <textarea name="fileDescript" [(ngModel)]="photoDescript"></textarea> 
+
+    <button type="submit" (click)="onSubmit()" >Submit</button>
+</form>
+
+
+
+
+
+</body>

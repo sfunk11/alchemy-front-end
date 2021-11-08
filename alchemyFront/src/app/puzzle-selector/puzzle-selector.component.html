@@ -1,0 +1,11 @@
+<div class="form-group">
+  <label for="puzzleSelector">Select a Puzzle</label>
+  <select class="form-control" #puzzleSelector (change)= 'onPuzzleSelect(puzzleSelector.value)'>
+    <option> ---------- </option>
+    <option *ngFor="let puzzle of puzzleList" value={{puzzle.imageFileName}}>{{puzzle.title}}</option>
+  </select>
+</div>
+<p>OR <span><a routerLink="/upload" class="nav-link active">Upload Photo for Custom Puzzle</a></span></p>
+<form>
+
+
