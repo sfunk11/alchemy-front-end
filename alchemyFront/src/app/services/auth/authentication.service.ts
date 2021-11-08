@@ -75,7 +75,7 @@ export class AuthenticationService {
   }
 
   SignIn(email: string, password: string){
-    return this.afAuth.signInWithEmailAndPassword(email,password)
+    this.afAuth.signInWithEmailAndPassword(email,password)
       .then((res) => {
 
         this.SetUserData(res.user);
