@@ -6,10 +6,12 @@
   <div class="card-body">
     <h5 class="card-title">{{puzzle.title}}</h5>
     <p class="card-text">{{puzzle.description}}</p>
+    <p *ngIf=!puzzle.makePublic>This photo is private.</p>
+    <p *ngIf=puzzle.makePublic>This photo is available as a public puzzle.</p>
     <div class="form-check">
-      <input class="checkbox form-check-input" type="checkbox" (change)=togglePublic($event.target) value={{personalList.indexOf(puzzle)}},checked id={{personalList.indexOf(puzzle)}}>
+      <input class="checkbox form-check-input" type="checkbox" (change)=togglePublic($event.target) value={{personalList.indexOf(puzzle)}}.checked id={{personalList.indexOf(puzzle)}}>
       <label class="form-check-label" for="publicCheck">
-       Make Available in Public List
+       Change public access level.
       </label>
     </div>
   </div>

@@ -4,7 +4,15 @@
 
   <!-- Notes: "menu-open" state will function as a full-blown dashboard. on smaller screens, it will be full-screen when open, on larger screens it will occupy a portion of the page when open. "menu-closed" state will function as an ordinary navbar.-->
 
-  <nav class="bg-light">
+  <!-- Open/Close Button-->
+  <input type="checkbox" class="dashboard-button" id="openDash">
+  <label for="openDash" class="toggleDash">
+    <div class="spinner diagonal p1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal p2"></div>
+  </label>
+
+  <nav class="bg-light" id="menu">
 
     <!-- Navigation Links-->
     <ul class="nav flex-column">
@@ -15,14 +23,6 @@
       <li class="nav-item">
         <a routerLink="/board" class="nav-link active">Puzzles</a>
       </li>
-
-
-
-      <!-- Additional links? Gameboard/categories...?-->
-      <li class="nav-item">
-        Placeholder
-      </li>
-
 
       <!-- Calling SignOut() Api from AuthService -->
       <li class="nav-item">
