@@ -1,54 +1,51 @@
 <body>
-    <br>
-    <app-puzzle-selector (puzzleSelected)=puzzleEventTriggered($event)></app-puzzle-selector>
-    <div *ngIf="!puzzleExists"></div>
-    <div *ngIf="puzzleExists" >
-     <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let movieRandom of moviesRand" cdkDrag>
-          <img src={{movieRandom}} >
+  <br>
+  <app-puzzle-selector (puzzleSelected)=puzzleEventTriggered($event)></app-puzzle-selector>
+  <div *ngIf="!puzzleExists"></div>
+  <div *ngIf="puzzleExists" >
+    <div *ngIf="wonGame">
+      <h1 style="color:black" >Your a Weiner !</h1>
+      <img src="https://www.seekpng.com/png/full/12-129989_download-hot-dog-no-background.png"  style="width:300px;height:300px;">
+      <br><br><br><br><br>
+    </div>
+   <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let movieRandom of moviesRand" cdkDrag>
+        <img src={{movieRandom}} >
 
-          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
 
-        </div>
       </div>
-      </div>
+    </div>
+    </div>
 
 
 
 
-     <!-- ---------------------------------------    DROP DOWN MENU SELECT IMAGE PUZZLE   ------------------------------------------------------- -->
-      <!-- NEED TO DYNAMICALLY GENERATE AN ARRAY OF LIST OF NAMES OF ALL PICS IN S3 BUCKET
-      USE THAT ARRAY FOR DROP DOWN
-      USE TEH SELE -->
+   <!-- ---------------------------------------    DROP DOWN MENU SELECT IMAGE PUZZLE   ------------------------------------------------------- -->
+    <!-- NEED TO DYNAMICALLY GENERATE AN ARRAY OF LIST OF NAMES OF ALL PICS IN S3 BUCKET
+    USE THAT ARRAY FOR DROP DOWN
+    USE TEH SELE -->
 
-        <!-- <mat-form-field appearance="fill">
-          <mat-label>Picture Puzzle</mat-label>
-
-          <mat-select (selectionChange)="switchArray($event)">
-
-            <mat-option>none</mat-option>
-            <mat-option *ngFor="let pic of this.puzzleList" [value]="pic">{{pic}}</mat-option>
-
-          </mat-select>
-        </mat-form-field>
-
-        <p style="color:white;">You selected:</p>
-
-
-        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-
-          <div class="example-box" *ngFor="let cuts of puzzleList" cdkDrag>
-            <img src={{cuts}}>
-              <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-          </div>
-
-        </div> -->
-
-        <div *ngIf="wonGame">
-          <h1 style="color:black" >Your a Weiner !</h1>
-          <img src="https://www.seekpng.com/png/full/12-129989_download-hot-dog-no-background.png"  style="width:300px;height:300px;">
-          <br><br><br><br><br>
+      <!-- <mat-form-field appearance="fill">
+        <mat-label>Picture Puzzle</mat-label>
+        <mat-select (selectionChange)="switchArray($event)">
+          <mat-option>none</mat-option>
+          <mat-option *ngFor="let pic of this.puzzleList" [value]="pic">{{pic}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p style="color:white;">You selected:</p>
+      <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let cuts of puzzleList" cdkDrag>
+          <img src={{cuts}}>
+            <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
         </div>
+      </div> -->
+
+      <div *ngIf="wonGame">
+        <h1 style="color:black" >Your a Weiner !</h1>
+        <img src="https://www.seekpng.com/png/full/12-129989_download-hot-dog-no-background.png"  style="width:300px;height:300px;">
+        <br><br><br><br><br>
+      </div>
 
 
 

@@ -1,3 +1,7 @@
+.jumbotron {
+  font-family: 'Fruktur', cursive;
+}
+
 .signIn {
   margin: 5vh auto;
   display: flex;

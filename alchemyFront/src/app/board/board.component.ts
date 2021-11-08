@@ -1,9 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { Photo } from '../services/util/photo';
 import { ApiService } from '../services/api/api.service';
 import { PuzzleService } from '../services/puzzle/puzzle.service';
 import { AuthenticationService } from '../services/auth/authentication.service';
+import { Subject } from 'rxjs';
+
 
 
 
