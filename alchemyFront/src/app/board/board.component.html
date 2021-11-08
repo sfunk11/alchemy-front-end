@@ -2,6 +2,12 @@
     <br>
     <app-puzzle-selector (puzzleSelected)=puzzleEventTriggered($event)></app-puzzle-selector>
     <div *ngIf="!puzzleExists"></div>
+      <div *ngIf="wonGame">
+        <h1 style="color:black" >Your a Weiner !</h1>
+        <img src="https://www.seekpng.com/png/full/12-129989_download-hot-dog-no-background.png"  style="width:300px;height:300px;">
+        <br><br><br><br><br>
+
+    </div>
     <div *ngIf="puzzleExists" >
      <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let movieRandom of moviesRand" cdkDrag>
@@ -44,11 +50,7 @@
 
         </div> -->
 
-        <div *ngIf="wonGame">
-          <h1 style="color:black" >Your a Weiner !</h1>
-          <img src="https://www.seekpng.com/png/full/12-129989_download-hot-dog-no-background.png"  style="width:300px;height:300px;">
-          <br><br><br><br><br>
-        </div>
+
 
 
 
