@@ -19,8 +19,8 @@
                 <img class="pfp" src="{{(this.user.photoURL) ? this.user.photoURL : '/assets/dummy-user.png'}}" alt="{{this.user.displayName}}">
               </div>
 
-              <div class="details-panel">
-                <app-admin *ngIf="isAdmin"></app-admin>
+              <div class="details-panel" *ngIf="!showForm">
+
                 <ul class="profile-fields">
                   <li class="profile-field">Display Name: <strong>{{this.user.displayName}}</strong></li>
                   <li class="profile-field">Name: <strong>{{(this.user.f_name) ? this.user.f_name : ''}}</strong>  <strong>{{(this.user.l_name) ? this.user.l_name : ''}}</strong></li>
@@ -28,6 +28,9 @@
                   <li class="profile-field">Email Verified: <strong>{{authService.userData.emailVerified}}</strong></li>
                 </ul>
                 <button class="edit-button btn btn-primary text-center" (click)="toggleForm()">Edit Profile</button>
+                <br><br>
+                <h3 *ngIf="isAdmin">Admin Functions:</h3>
+                <app-admin *ngIf="isAdmin"></app-admin>
               </div>
 
               <div class="details-panel edit-form hidden" *ngIf="showForm">
@@ -48,6 +51,7 @@
                 </div>
 
                 <button class="btn btn-primary text-center" (click)="submit(userInfo)" #saveProfile>Save Changes</button>
+
               </div>
             </div>
               <app-photo-display></app-photo-display>
