@@ -20,16 +20,17 @@
               </div>
 
               <div class="details-panel">
+                <app-admin *ngIf="isAdmin"></app-admin>
                 <ul class="profile-fields">
                   <li class="profile-field">Display Name: <strong>{{this.user.displayName}}</strong></li>
                   <li class="profile-field">Name: <strong>{{(this.user.f_name) ? this.user.f_name : ''}}</strong>  <strong>{{(this.user.l_name) ? this.user.l_name : ''}}</strong></li>
                   <li class="profile-field">Email: <strong>{{authService.userData.email}}</strong></li>
                   <li class="profile-field">Email Verified: <strong>{{authService.userData.emailVerified}}</strong></li>
                 </ul>
-                <button class="edit-button btn btn-primary text-center">Edit Profile</button>
+                <button class="edit-button btn btn-primary text-center" (click)="toggleForm()">Edit Profile</button>
               </div>
 
-              <div class="details-panel edit-form hidden" >
+              <div class="details-panel edit-form hidden" *ngIf="showForm">
                 <div class="profile-fields" [formGroup] = "userInfo">
                   <div class="profile-field">
                     <label for="display-name">Display Name: </label>
@@ -48,8 +49,12 @@
 
                 <button class="btn btn-primary text-center" (click)="submit(userInfo)" #saveProfile>Save Changes</button>
               </div>
-
             </div>
+              <app-photo-display></app-photo-display>
+
+
+
+
 
           </div>
         </div>

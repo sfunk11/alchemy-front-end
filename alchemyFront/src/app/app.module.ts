@@ -7,7 +7,6 @@ import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFirestoreModule } from "@angular/fire//compat/firestore";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { AuthenticationService } from './services/auth/authentication.service';
@@ -26,6 +25,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 import { PuzzleService } from './services/puzzle/puzzle.service';
 import { PuzzleSelectorComponent } from './puzzle-selector/puzzle-selector.component';
+import { PhotoDisplayComponent } from './photo-display/photo-display.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 
@@ -41,13 +42,11 @@ import { PuzzleSelectorComponent } from './puzzle-selector/puzzle-selector.compo
     ProfileComponent,
     AdminComponent,
     PhotoUploadComponent,
-    PuzzleSelectorComponent
+    PuzzleSelectorComponent,
+    PhotoDisplayComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
@@ -58,9 +57,6 @@ import { PuzzleSelectorComponent } from './puzzle-selector/puzzle-selector.compo
     AngularFirestoreModule,
     BrowserAnimationsModule,
     DragDropModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
     MatSelectModule,
     MatFormFieldModule
 

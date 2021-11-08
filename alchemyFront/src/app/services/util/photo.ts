@@ -1,11 +1,15 @@
 import { User } from "./user";
 
 export interface Photo {
-  photoId: string;
+  id?:number;
+  approved?:boolean;
+  photoId: number;
   title:string;
   description: string; //
-  file: File, //
-  imageFileName: string, //
+  file: File; //
+  imageFileName: string; //
   uploader: User;
-  isApproved:boolean
+  isApproved:boolean;
+  url?:string
+  makePublic?:boolean;
 }

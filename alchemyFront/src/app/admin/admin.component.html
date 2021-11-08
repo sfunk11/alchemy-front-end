@@ -1,81 +1,15 @@
 
-<!-- Top navigation -->
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0">
-      <img class="brand-logo" src="assets/logo-positronx-white.svg" alt="positronX.io Logo">
-    </a>
-  </nav>
-
-  <!-- Sidebar navigation -->
-<div class="container-fluid">
-    <div class="row">
-
-      <nav class="col-md-2 d-md-block bg-light sidebar">
-        <div class="sidebar-sticky">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link active">
-                <i class="fas fa-user"></i>User Profile
-              </a>
-            </li>
-            <!-- Calling SignOut() Api from AuthService -->
-            <li class="nav-item">
-              <a class="nav-link" (click)="authServ.SignOut()">
-                <i class="fas fa-sign-out-alt"></i>Log out
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      <!-- Main content -->
-      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <div class="inner-adjust">
-
-          <div class="pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Admin Profile</h1>
-          </div>
-          <!-- Show user data when logged in -->
-          <div class="row" *ngIf="authServ.userData as user">
-            <div class="col-md-12">
-              <div class="media">
-                <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
-                  alt="{{user.displayName}}">
-                <div class="media-body">
-                  <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
-                  <p>User ID: <strong>{{user.uid}}</strong></p>
-                  <br><br>
-                  <h2>Admin Commands</h2>
-                  <ul>
-                  <p>Add User</p>
-                  <p>Delete User</p>
-                  <p>Update User</p>
-                  <p>Approve/Deny Photo</p>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </main>
-
-    </div>
-  </div>
-<p>admin works!</p>
-
-<div class="container-lg">
-    <nav class="bg-light">
+<div class="container-lg" *ngIf="isAdmin ==1">
         <ul class="nav flex-column">
             <li class="nav-item">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">
                     Add a new user
                 </button>
 
                          <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                <div class="modal fade" id="addUserModal"  tabindex="-1" role = 'dialog' aria-labelledby="addUserModal" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="staticBackdropLabel">Admin: Add User</h5>
@@ -87,18 +21,18 @@
 
                                         <div class="mb-3">
                                             <label for="userEmail" class="form-label"><u>User email </u><br><br></label>
-                                            <input type="text" class="form-control" id="userEmail" placeholder="Type user email here">
+                                            <input type="text" class="form-control" #userEmail formControlName="userEmail" placeholder="Type user email here">
                                             <br><br>
                                         </div>
                                         <div class="mb-3">
                                             <label for="userPW" class="form-label"><u>User password</u><br><br></label>
-                                            <input type="text" class="form-control" id="userPW" placeholder="Type user password here">
+                                            <input type="text" class="form-control" #userPW formControlName="userPW" placeholder="Type temporary user password here">
                                             <br><br>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" (click)="submitUser(userGroup)">Add user</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="submitUser(userGroup)">Add user</button>
 
                                     </div>
                                 </form>
@@ -110,44 +44,44 @@
             </li>
 
             <li class= "nav-item">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateUserModal">
                    Update a user
                 </button>
 
   <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="updateUserModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="staticBackdropLabel">Admin: Update User</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form [formGroup] = "userGroup">
+                            <form [formGroup] = "updateGroup">
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label for="userEmail" class="form-label"><u>User Email </u><br><br></label>
-                                            <input type="text" class="form-control" id="userEmail" placeholder="Type user email here">
+                                            <label for="email" class="form-label"><u>User Email </u><br><br></label>
+                                            <input type="text" class="form-control" #email formControlName="email" placeholder="Type user email here">
                                             <br><br>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="userPW" class="form-label"><u>User Password</u><br><br></label>
-                                            <input type="text" class="form-control" id="userPW" placeholder="Type user password here">
+                                            <label for="firstName" class="form-label"><u>First Name</u><br><br></label>
+                                            <input type="text" class="form-control" #firstName formControlName="firstName" placeholder="Type user password here">
                                             <br><br>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="userDisplayName" class="form-label"><u>User Display Name</u><br><br></label>
-                                            <input type="text" class="form-control" id="userPW" placeholder="Type user display name here">
+                                            <label for="lastName" class="form-label"><u>Last Name</u><br><br></label>
+                                            <input type="text" class="form-control" #lastName formControlName="lastName" placeholder="Type user display name here">
                                             <br><br>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="userPhoto" class="form-label"><u>User Photo URL</u><br><br></label>
-                                            <input type="text" class="form-control" id="userPhoto" placeholder="Type user photo url here">
+                                            <label for="displayName" class="form-label"><u>Display Name</u><br><br></label>
+                                            <input type="text" class="form-control" #displayName formControlName="displayName" placeholder="Type user photo url here">
                                             <br><br>
                                         </div>
                                     </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" (click)="updateUser(userGroup)">Update user</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateUser(userGroup)">Update user</button>
 
                             </div>
                             </form>
@@ -159,40 +93,7 @@
             <li class="nav-item">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Delete a user
-                </button>
-
-  <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Admin: Delete User</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                                <form [formGroup] = "userGroup">
-                                    <div class="modal-body">
-                                        <div class="mb-3">
-                                            <label for="userEmail" class="form-label"><u>User email </u><br><br></label>
-                                            <input type="text" class="form-control" id="userEmail" placeholder="Type user email here">
-                                            <br><br>
-                                        </div>
-                                    </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" (click)="submitUser(userGroup)">Delete user</button>
-
-                            </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Delete a user
+                    Approve Photos
                 </button>
 
   <!-- Modal -->
@@ -203,29 +104,41 @@
                                 <h5 class="modal-title" id="staticBackdropLabel">Admin: Approve Photo</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                                <form [formGroup] = "photoGroup">
-                                    <div class="modal-body">
-                                        <div class="mb-3">
-                                            <label for="adminID" class="form-label"><u>Admin ID </u><br><br></label>
-                                            <input type="text" class="form-control" id="userEmail" placeholder="Type admin ID here">
-                                            <br><br>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="photoID" class="form-label"><u>Photo ID </u><br><br></label>
-                                            <input type="text" class="form-control" id="userEmail" placeholder="Type Photo ID here">
-                                            <br><br>
-                                        </div>
-                                    </div>
+                           <div class="modal-body">
+                            <table class="table table-dark table-striped">
+                              <thead>
+                                <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">Picture</th>
+                                  <th scope="col">Picture Name</th>
+                                  <th scope="col">Uploader</th>
+                                  <th scope="col">Action</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                    <tr *ngFor = "let photo of photoList">
+                                      <td>{{photo.id}}</td>
+                                      <td>
+                                        <img [src]=photo.url width="200" margin="2">
+                                      </td>
+                                      <td>{{photo.title| titlecase}}</td>
+                                      <td>{{photo.uploader.displayName }}</td>
+                                      <td>
+                                        <button type="button" class="btn btn-info" (click)="approvePhoto(photo.id)">Approve</button>
+                                        <button type="button" class="btn btn-danger"(click)="deletePhoto(photo.id)">Delete</button>
+                                      </td>
+                                    </tr>
+                              </tbody>
+                            </table>
+
+                           </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" (click)="approve(photoGroup)">Approve Photo</button>
 
                             </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </li>
         </ul>
-    </nav>
 </div>

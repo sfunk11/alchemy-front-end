@@ -15,8 +15,15 @@ export class ProfileComponent implements OnInit {
   public user= {} as User;
   constructor(public authService: AuthenticationService, private apiService: ApiService) { }
 
+  public isAdmin = false;
+  public showForm = false;
+
   ngOnInit(): void {
       this.getUser();
+      if (this.authService.userData.displayName == ''){
+        this.showForm = true;
+      }
+      this.setAdmin();
   }
 
 
@@ -41,6 +48,8 @@ export class ProfileComponent implements OnInit {
 
         this.user = response as User;
         console.log(this.user);
+        this.setAdmin();
+        this.showForm= false;
       },
       error =>{
         console.warn("there was an error ", error);
@@ -52,7 +61,7 @@ export class ProfileComponent implements OnInit {
     this.apiService.getUserProfile(this.authService.userData.email).subscribe (
       res => {
         this.user = res as User;
-        console.log(this.user);
+        this.setAdmin();
       },
       error => {
         console.warn("there was an error ", error);
@@ -60,7 +69,17 @@ export class ProfileComponent implements OnInit {
     )
   }
 
+  toggleForm() {
+    this.showForm = !this.showForm;
+  }
 
+  setAdmin() {
+    if (this.user.roleID = 1) {
+      this.isAdmin = true;
+    } else {
+      this.isAdmin = false;
+    }
+  }
   /* Query Selector Functions go Here */
 
 }

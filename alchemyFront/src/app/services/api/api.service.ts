@@ -32,10 +32,6 @@ export class ApiService {
     return this.http.post<String>(this.userUrl, user, this.httpHead);
   }
 
-  public deleteUser(user:any): Observable<Object>{
-
-    return this.http.delete<Object>(user);
-  }
   public getAllUsers() : Observable<User[]>{
 
     return this.http.get<User[]>(this.userUrl, this.httpHead);
@@ -63,5 +59,16 @@ export class ApiService {
     let url = this.photoUrl + `/admin/approve/${adminId}/${photoId}`
     return this.http.post<Object>(url,this.httpHead)
   }
+
+  public deletePhoto(adminId:number, photoId:number, ):Observable<any>{
+    let url = this.photoUrl + `/admin/reject/${adminId}/${photoId}`
+    return this.http.post<Object>(url,this.httpHead)
+  }
+
+  public togglePublic(photo:Photo, email: string): Observable<any>{
+    let url = this.photoUrl + `/${photo.id}/${email}/${photo.makePublic}`;
+    return this.http.put<Object>(url, this.httpHead)
+  }
+
 
 }

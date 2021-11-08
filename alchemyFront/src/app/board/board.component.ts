@@ -32,18 +32,18 @@ export class BoardComponent implements OnInit{
 
 ngOnInit(): void
 {
-  this.puzzleName = this.puzzle.puzzleName;
-  console.log(this.puzzleName)
-  if (this.puzzleName != ""){
+  this.puzzleName = this.puzzle.puzzleData;
+  if (this.puzzleName != "" || this.puzzleName == undefined){
     this.createPuzzleBoard(this.puzzleName);
   }
 }
 puzzleEventTriggered(puzzle:string){
-  console.log(puzzle);
   this.createPuzzleBoard(puzzle);
 }
 
 createPuzzleBoard(puzzleName:string){
+  this.movies = [];
+  this.moviesRand =[];
   this.puzzleExists = true;
   for (let  i = 0; i<10; i++)
   {
@@ -72,7 +72,6 @@ createPuzzleBoard(puzzleName:string){
     t = this.moviesRand[m];
     this.moviesRand[m] = this.moviesRand[i];
     this.moviesRand[i] = t;
-    console.log(this.moviesRand[i]);
   }
 }
 

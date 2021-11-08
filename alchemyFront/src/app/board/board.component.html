@@ -1,13 +1,11 @@
 <body>
-    <br><br>
-
+    <br>
     <app-puzzle-selector (puzzleSelected)=puzzleEventTriggered($event)></app-puzzle-selector>
-    <br><br><br>
     <div *ngIf="!puzzleExists"></div>
     <div *ngIf="puzzleExists" >
      <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let movieRandom of moviesRand" cdkDrag>
-          <img src={{movieRandom}} width="max-width">
+          <img src={{movieRandom}} >
 
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
 
@@ -54,6 +52,4 @@
 
 
 
-        <br><br><br><br><br>
-       <p>hi</p>
-      </body>
+

@@ -3,6 +3,8 @@ import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { User } from "../util/user";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { ApiService } from '../api/api.service';
+import { PuzzleService } from '../puzzle/puzzle.service';
 
 
 
@@ -17,7 +19,9 @@ export class AuthenticationService {
     private afAuth: AngularFireAuth,
     private afStore: AngularFirestore,
     private router: Router,
-    private ngZone: NgZone )
+    private ngZone: NgZone,
+    private api: ApiService,
+    private puzServ:PuzzleService )
     {
     this.afAuth.authState.subscribe( user => {
       if (user) {
@@ -58,6 +62,10 @@ export class AuthenticationService {
     })
   }
 
+  getUserData(){
+    return this.userData;
+  }
+
   SendVerificationEmail(){
     return this.afAuth.currentUser
       .then(user => user!.sendEmailVerification())
@@ -69,13 +77,22 @@ export class AuthenticationService {
   SignIn(email: string, password: string){
     return this.afAuth.signInWithEmailAndPassword(email,password)
       .then((res) => {
-        this.ngZone.run(() => {
-        this.router.navigate(['profile']);
-        });
+
         this.SetUserData(res.user);
+        this.api.getUserProfile(res.user!.email!).subscribe(
+          res=> {
+            this.userData.userID = res.userID;
+            this.userData.displayName= res.displayName;
+            this.userData.roleID = res.roleID;
+          })
+          this.ngZone.run(() => {
+            this.getUserData();
+            this.router.navigate(['profile']);
+          });
       }).catch((error) => {
         window.alert(error.message)
       })
+
   }
 
   SignUp(email:string, password: string) {
@@ -99,9 +116,10 @@ export class AuthenticationService {
   }
 
   get isLoggedIn(): boolean {
-    if (this.userData == undefined || this.userData == null){
+    let user = this.getUserData()
+    if (user == null || user == undefined){
       return false;
-    }else if(this.userData.emailVerified==false){
+    }else if(user.emailVerified==false){
         return false;
       }
 
@@ -112,7 +130,7 @@ export class AuthenticationService {
     return this.afAuth.signInWithPopup(provider)
     .then((res) => {
       this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['profile']);
         })
       this.SetUserData(res.user);
     }).catch((error) => {
@@ -123,6 +141,7 @@ export class AuthenticationService {
 
   SignOut() {
     return this.afAuth.signOut().then(() => {
+      this.puzServ.puzzleName='';
       this.router.navigate(['sign-in']);
     })
   }
