@@ -27,6 +27,7 @@ import { PuzzleService } from './services/puzzle/puzzle.service';
 import { PuzzleSelectorComponent } from './puzzle-selector/puzzle-selector.component';
 import { PhotoDisplayComponent } from './photo-display/photo-display.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { NavComponent } from './nav/nav.component';
 
 
 
@@ -43,7 +44,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     AdminComponent,
     PhotoUploadComponent,
     PuzzleSelectorComponent,
-    PhotoDisplayComponent
+    PhotoDisplayComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
