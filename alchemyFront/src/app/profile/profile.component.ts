@@ -74,7 +74,7 @@ export class ProfileComponent implements OnInit {
   }
 
   setAdmin() {
-    if (this.user.roleID = 1) {
+    if (this.user.roleID == 1) {
       this.isAdmin = true;
     } else {
       this.isAdmin = false;
