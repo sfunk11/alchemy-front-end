@@ -1,25 +1,25 @@
 
-<div>
+<div class="upload">
   <form [formGroup]="photoGroup">
 
   <h3>Upload a Photo to Create Your Own Custom Puzzle</h3>
-  <div class="form-group">
+  <div class="form-group inputGroup">
     <label for="title">Photo Title</label>
     <input type="text" class="form-control" #title  formControlName="title" placeholder="What is the name of your puzzle?">
   </div>
-  <div class="form-group">
+  <div class="form-group inputGroup">
     <label for="description">Description</label>
     <input class="form-control"  #description formControlName = "description" placeholder="Please give a short description of your photo.">
   </div>
-  <div class="form-group">
+  <div class="form-group inputGroup">
     <label for="fileName">fileName</label>
     <input type="text" class="form-control" #fileName formControlName="fileName" placeholder="example: myPhoto.jpg">
   </div>
-  <div class="form-group">
+  <div class="form-group inputGroup ">
     <input type="file" class="form-control-file" #file (change)="onChange($event)">
   </div>
   <div class="form-group">
-    <div class="form-check">
+    <div class="form-check text-center">
       <input class="form-check-input" type="checkbox" value="makePublic" #publicCheck (change)=onCheck($event)>
       <label class="form-check-label" for="publicCheck">
         Share my puzzle with the public
