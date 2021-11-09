@@ -41,6 +41,7 @@ ngOnInit(): void
 }
 puzzleEventTriggered(puzzle:string){
   this.createPuzzleBoard(puzzle);
+  this.wonGame= false;
 }
 
 createPuzzleBoard(puzzleName:string){
